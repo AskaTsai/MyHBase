@@ -1,6 +1,6 @@
-package com.sse.myhbase.Type.handler;
+package com.sse.myhbase.type.handler;
 
-import com.sse.myhbase.Type.AbstractTypeHandler;
+import com.sse.myhbase.type.AbstractTypeHandler;
 import org.apache.hadoop.hbase.util.Bytes;
 
 /**

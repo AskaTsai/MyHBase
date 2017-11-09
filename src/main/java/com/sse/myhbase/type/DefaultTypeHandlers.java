@@ -1,5 +1,7 @@
-package com.sse.myhbase.Type;
+package com.sse.myhbase.type;
 
+import com.sse.myhbase.type.handler.DateHandler;
+import com.sse.myhbase.type.handler.StringHandler;
 import com.sse.myhbase.util.ClassUtil;
 import com.sse.myhbase.util.Util;
 

@@ -1,8 +1,8 @@
 package com.sse.myhbase.config;
 
-import com.sse.myhbase.Type.DefaultTypeHandlers;
-import com.sse.myhbase.Type.TypeHandler;
-import com.sse.myhbase.Type.TypeHandlerHolder;
+import com.sse.myhbase.type.DefaultTypeHandlers;
+import com.sse.myhbase.type.TypeHandler;
+import com.sse.myhbase.type.TypeHandlerHolder;
 import com.sse.myhbase.exception.MyHBaseException;
 import com.sse.myhbase.util.ClassUtil;
 import com.sse.myhbase.util.StringUtil;

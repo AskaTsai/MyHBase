@@ -1,4 +1,4 @@
-package com.sse.myhbase.Type;
+package com.sse.myhbase.type;
 
 import com.sse.myhbase.exception.MyHBaseException;
 import com.sse.myhbase.util.ClassUtil;
