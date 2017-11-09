@@ -1,8 +1,17 @@
 package com.sse.myhbase.config;
 
+import com.sse.myhbase.client.rowkey.BytesRowKey;
+import com.sse.myhbase.client.rowkey.handler.BytesRowKeyHandler;
+import com.sse.myhbase.client.rowkey.handler.RowKeyHandler;
+import com.sse.myhbase.client.rowkey.handler.RowKeyHandlerHolder;
 import com.sse.myhbase.core.NotNullable;
 import com.sse.myhbase.core.Nullable;
+import com.sse.myhbase.exception.MyHBaseException;
+import com.sse.myhbase.util.StringUtil;
+import com.sse.myhbase.util.Util;
+import org.apache.hadoop.hbase.util.Bytes;
 
+import java.util.List;
 import java.util.Map;
 import java.util.TreeMap;
 
@@ -36,13 +45,52 @@ public class HBaseTableSchema {
     private String rowKeyHandlerName;
 
     //-----------------运行时的配置--------------------
-
+    /**
+     * 表名bytes
+     */
     private byte[] tableNameBytes;
 
+    /**
+     * 默认列族bytes
+     */
     private byte[] defaultFamilyBytes;
 
+    /**
+     * 列的schema  map的规则Qualifier->Family-> HBaseColumnSchema.
+     */
     private Map<String, Map<String, HBaseColoumSchema>> coloumSchemas = new TreeMap<>();
 
+    /**
+     * RowKeyHandler的实例
+     */
     private RowKeyHandler rowKeyHandler;
+
+    /**
+     * 初始化
+     */
+    public void init(List<HBaseColoumSchema> hBaseColoumSchemas) {
+        Util.checkEmptyString(tableName);
+        tableNameBytes = Bytes.toBytes(tableName);
+
+        if (StringUtil.isNotEmptyString(defaultFamily)) {
+            defaultFamilyBytes = Bytes.toBytes(defaultFamily);
+        }
+
+        if (StringUtil.isEmptyString(rowKeyHandlerName)) {
+            rowKeyHandlerName = BytesRowKeyHandler.class.getCanonicalName();
+        }
+
+        rowKeyHandler = RowKeyHandlerHolder.findRowKeyHandler(rowKeyHandlerName);
+
+        if (hBaseColoumSchemas.isEmpty()) {
+            throw new MyHBaseException("no HBaseColoumSchemas");
+        }
+
+        for (HBaseColoumSchema coloumSchema : hBaseColoumSchemas) {
+            if (StringUtil.isEmptyString(coloumSchema.)) {
+
+            }
+        }
+    }
 
 }

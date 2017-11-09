@@ -15,4 +15,11 @@ public class StringUtil {
     public static boolean isEmptyString(String str) {
         return str == null ||str.isEmpty();
     }
+
+    /**
+     * @Author: Cai Shunda
+     * @Description: 检查字符串不为null且不为""
+     * @Date: 11:12 2017/11/8
+     */
+    public static boolean isNotEmptyString(String str) {return !isEmptyString(str);}
 }
