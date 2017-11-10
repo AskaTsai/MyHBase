@@ -38,4 +38,13 @@ public class HBaseTableConfig {
      */
     private ConcurrentHashMap<String, TypeInfo> mappingType = new ConcurrentHashMap<>();
 
+    /**
+     * @Author: Cai Shunda
+     * @Description: 初始化HBaseTableConfig
+     * @Date: 22:49 2017/11/10
+     */
+    public void init() {
+
+    }
+
 }

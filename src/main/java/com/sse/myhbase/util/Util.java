@@ -52,4 +52,18 @@ public class Util {
             throw new MyHBaseException("num is negative.");
         }
     }
+
+    /**
+     * @Author: Cai Shunda
+     * @Description: 检查字节数组values是否是指定长度
+     * @Date: 20:41 2017/11/10
+     */
+    public static void checkLength(byte[] values, int length) {
+        Util.checkNull(values);
+
+        if (values.length != length) {
+            throw new MyHBaseException("checkLength error. values.length="
+                    + values.length + " length=" + length);
+        }
+    }
 }

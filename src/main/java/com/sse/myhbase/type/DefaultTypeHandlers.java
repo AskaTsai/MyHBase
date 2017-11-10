@@ -1,7 +1,6 @@
 package com.sse.myhbase.type;
 
-import com.sse.myhbase.type.handler.DateHandler;
-import com.sse.myhbase.type.handler.StringHandler;
+import com.sse.myhbase.type.handler.*;
 import com.sse.myhbase.util.ClassUtil;
 import com.sse.myhbase.util.Util;
 
@@ -16,6 +15,7 @@ import java.util.Map;
  * @Modified by:
  */
 public class DefaultTypeHandlers {
+    private static EnumHandler enumHandler = new EnumHandler();
     private static Map<Class<?>, TypeHandler> defaultHandlers = new HashMap<Class<?>, TypeHandler>();
     static {
         defaultHandlers.put(String.class, new StringHandler());

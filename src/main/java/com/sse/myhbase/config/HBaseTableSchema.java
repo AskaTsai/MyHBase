@@ -87,9 +87,18 @@ public class HBaseTableSchema {
         }
 
         for (HBaseColoumSchema coloumSchema : hBaseColoumSchemas) {
-            if (StringUtil.isEmptyString(coloumSchema.)) {
-
+            if (StringUtil.isEmptyString(coloumSchema.getFamily())) {
+                coloumSchema.setFamily(defaultFamily);
             }
+            coloumSchema.init();
+
+            // family -> HBaseColoumSchema
+            Map<String, HBaseColoumSchema> tmpMap = coloumSchemas.get(coloumSchema.getQualifier());
+            if (tmpMap == null) {
+                tmpMap = new TreeMap<String, HBaseColoumSchema>();
+                coloumSchemas.put(coloumSchema.getQualifier(), tmpMap);
+            }
+            tmpMap.put(coloumSchema.getFamily(), coloumSchema);
         }
     }
 
