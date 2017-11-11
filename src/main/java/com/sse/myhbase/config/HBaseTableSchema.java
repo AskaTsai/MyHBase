@@ -102,4 +102,27 @@ public class HBaseTableSchema {
         }
     }
 
+    public String getTableName() {
+        return tableName;
+    }
+
+    public void setTableName(String tableName) {
+        this.tableName = tableName;
+    }
+
+    public String getDefaultFamily() {
+        return defaultFamily;
+    }
+
+    public void setDefaultFamily(String defaultFamily) {
+        this.defaultFamily = defaultFamily;
+    }
+
+    public String getRowKeyHandlerName() {
+        return rowKeyHandlerName;
+    }
+
+    public void setRowKeyHandlerName(String rowKeyHandlerName) {
+        this.rowKeyHandlerName = rowKeyHandlerName;
+    }
 }
