@@ -45,7 +45,7 @@ public class HBaseTableConfig {
     /**
      * 类的类型信息映射
      */
-    private ConcurrentHashMap<String, TypeInfo> mappingTypes = new ConcurrentHashMap<>();
+    private ConcurrentHashMap<Class<?>, TypeInfo> mappingTypes = new ConcurrentHashMap<>();
 
     /**
      * @Author: Cai Shunda
@@ -56,10 +56,10 @@ public class HBaseTableConfig {
         Util.checkNull(configResource);
 
         try {
-            List<HBaseColoumSchema> hBaseColoumSchemas = new ArrayList<>();
+            List<HBaseColumnSchema> hBaseColumnSchemas = new ArrayList<>();
             HBaseTableConfigParser.parseTableSchema(configResource.getInputStream(),
-                    hBaseTableSchema, hBaseColoumSchemas);
-            hBaseTableSchema.init(hBaseColoumSchemas);
+                    hBaseTableSchema, hBaseColumnSchemas);
+            hBaseTableSchema.init(hBaseColumnSchemas);
 
             List<HBaseQuery> hBaseQueries = HBaseTableConfigParser.parseHBaseQuery(
                      configResource.getInputStream());

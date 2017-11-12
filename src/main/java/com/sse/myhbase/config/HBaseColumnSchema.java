@@ -16,11 +16,11 @@ import org.apache.log4j.Logger;
  * @Date: Created in 20:40 2017/11/7
  * @Modified by:
  */
-public class HBaseColoumSchema {
+public class HBaseColumnSchema {
     /**
      *logger
      */
-    private static Logger logger = Logger.getLogger(HBaseColoumSchema.class);
+    private static Logger logger = Logger.getLogger(HBaseColumnSchema.class);
 
     //----------------xml的配置----------------------
     /**

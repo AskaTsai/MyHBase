@@ -25,7 +25,7 @@ public class HBaseTableConfigParser {
      * @Date: 21:38 2017/11/11
      */
     public static void parseTableSchema(InputStream inputStream, HBaseTableSchema tableSchema,
-                                  List<HBaseColoumSchema> hbaseColumnSchemas) {
+                                  List<HBaseColumnSchema> hbaseColumnSchemas) {
         Util.checkNull(inputStream);
         Util.checkNull(tableSchema);
         Util.checkNull(hbaseColumnSchemas);
@@ -43,12 +43,12 @@ public class HBaseTableConfigParser {
             if (!node.getNodeName().equals("HBaseColumnSchema")) {
                 continue;
             }
-            HBaseColoumSchema hBaseColoumSchema = new HBaseColoumSchema();
-            hBaseColoumSchema.setFamily(XmlUtil.getAttribute(node, "family"));
-            hBaseColoumSchema.setQualifier(XmlUtil.getAttribute(node, "qualifier"));
-            hBaseColoumSchema.setTypeName(XmlUtil.getAttribute(node, "typeName"));
-            hBaseColoumSchema.setTypeHandlerName(XmlUtil.getAttribute(node, "handler"));
-            hbaseColumnSchemas.add(hBaseColoumSchema);
+            HBaseColumnSchema hBaseColumnSchema = new HBaseColumnSchema();
+            hBaseColumnSchema.setFamily(XmlUtil.getAttribute(node, "family"));
+            hBaseColumnSchema.setQualifier(XmlUtil.getAttribute(node, "qualifier"));
+            hBaseColumnSchema.setTypeName(XmlUtil.getAttribute(node, "typeName"));
+            hBaseColumnSchema.setTypeHandlerName(XmlUtil.getAttribute(node, "handler"));
+            hbaseColumnSchemas.add(hBaseColumnSchema);
         }
     }
 

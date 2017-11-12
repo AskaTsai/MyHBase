@@ -1,6 +1,5 @@
 package com.sse.myhbase.config;
 
-import com.sse.myhbase.client.rowkey.BytesRowKey;
 import com.sse.myhbase.client.rowkey.handler.BytesRowKeyHandler;
 import com.sse.myhbase.client.rowkey.handler.RowKeyHandler;
 import com.sse.myhbase.client.rowkey.handler.RowKeyHandlerHolder;
@@ -58,7 +57,7 @@ public class HBaseTableSchema {
     /**
      * 列的schema  map的规则Qualifier->Family-> HBaseColumnSchema.
      */
-    private Map<String, Map<String, HBaseColoumSchema>> coloumSchemas = new TreeMap<>();
+    private Map<String, Map<String, HBaseColumnSchema>> coloumSchemas = new TreeMap<>();
 
     /**
      * RowKeyHandler的实例
@@ -68,7 +67,7 @@ public class HBaseTableSchema {
     /**
      * 初始化
      */
-    public void init(List<HBaseColoumSchema> hBaseColoumSchemas) {
+    public void init(List<HBaseColumnSchema> hBaseColumnSchemas) {
         Util.checkEmptyString(tableName);
         tableNameBytes = Bytes.toBytes(tableName);
 
@@ -82,24 +81,42 @@ public class HBaseTableSchema {
 
         rowKeyHandler = RowKeyHandlerHolder.findRowKeyHandler(rowKeyHandlerName);
 
-        if (hBaseColoumSchemas.isEmpty()) {
+        if (hBaseColumnSchemas.isEmpty()) {
             throw new MyHBaseException("no HBaseColoumSchemas");
         }
 
-        for (HBaseColoumSchema coloumSchema : hBaseColoumSchemas) {
+        for (HBaseColumnSchema coloumSchema : hBaseColumnSchemas) {
             if (StringUtil.isEmptyString(coloumSchema.getFamily())) {
                 coloumSchema.setFamily(defaultFamily);
             }
             coloumSchema.init();
 
-            // family -> HBaseColoumSchema
-            Map<String, HBaseColoumSchema> tmpMap = coloumSchemas.get(coloumSchema.getQualifier());
+            // family -> HBaseColumnSchema
+            Map<String, HBaseColumnSchema> tmpMap = coloumSchemas.get(coloumSchema.getQualifier());
             if (tmpMap == null) {
-                tmpMap = new TreeMap<String, HBaseColoumSchema>();
+                tmpMap = new TreeMap<String, HBaseColumnSchema>();
                 coloumSchemas.put(coloumSchema.getQualifier(), tmpMap);
             }
             tmpMap.put(coloumSchema.getFamily(), coloumSchema);
         }
+    }
+
+    /**
+     * @Author: Cai Shunda
+     * @Description: 通过列名找到对应的列Schema，只有当且仅当通过指定列名找到一个Schema才能返回，否则会报错
+     * @Date: 21:48 2017/11/12
+     */
+    public HBaseColumnSchema findColummSchema(String qualifier) {
+        Util.checkEmptyString(qualifier);
+        Map<String, HBaseColumnSchema> tem = coloumSchemas.get(qualifier);
+        Util.checkNull(tem);
+        if (tem.size() == 1) {
+            for (HBaseColumnSchema t : tem.values()) {
+                return t;
+            }
+        }
+        throw new MyHBaseException("find 0 or more than one HBaseColumnSchema " +
+                "with specified qualifier = " + qualifier);
     }
 
     public String getTableName() {
@@ -125,4 +142,5 @@ public class HBaseTableSchema {
     public void setRowKeyHandlerName(String rowKeyHandlerName) {
         this.rowKeyHandlerName = rowKeyHandlerName;
     }
+
 }
