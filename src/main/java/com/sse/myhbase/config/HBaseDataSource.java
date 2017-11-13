@@ -6,6 +6,7 @@ import com.sse.myhbase.hbase.HTablePoolAdaptor;
 import com.sse.myhbase.hbase.HTablePoolService;
 import com.sse.myhbase.hbase.MyHBaseHTablePool;
 import com.sse.myhbase.util.ConfigUtil;
+import com.sse.myhbase.util.StringUtil;
 import com.sse.myhbase.util.Util;
 import org.apache.hadoop.conf.Configuration;
 import org.apache.hadoop.hbase.HBaseConfiguration;
@@ -104,6 +105,26 @@ public class HBaseDataSource {
      * 初始化数据源
      * */
     public void init() {
+        try {
+            System.setProperty("javax.xml.parsers.DocumentBuilderFactory",
+                    "com.sun.org.apache.xerces.internal.jaxp.DocumentBuilderFactoryImpl");
+            System.setProperty("javax.xml.parsers.SAXParserFactory",
+                    "com.sun.org.apache.xerces.internal.jaxp.SAXParserFactoryImpl");
+
+            if (PoolType.MyHBaseHTablePool.name().equals(hTablePoolType)) {
+                poolType = PoolType.MyHBaseHTablePool;
+            } else {
+                poolType = PoolType.DefaultHTablePool;
+            }
+            initHBaseConfiguration();
+            initConnection();
+            initHTablePoolService();
+            System.out.println(this);
+            logger.info(this);
+        } catch (Exception e) {
+            logger.error("HBaseDataSource init error.", e);
+            throw new MyHBaseException("HBaseDataSource init error.", e);
+        }
 
     }
 
@@ -196,7 +217,20 @@ public class HBaseDataSource {
 
     @Override
     public String toString() {
-        return super.toString();
+        StringBuilder sb = new StringBuilder();
+        sb.append("\n===========HBaseDataSource==============\n");
+        StringUtil.appendKeyValue(sb, "ID" , "id" , id);
+        StringUtil.appendMap(sb, "FINAL HBASE CONFIGURATION", finalHBaseConfig);
+        sb.append("===========HBaseDataSource==============\n");
+        return sb.toString();
+    }
+
+    public List<Resource> getConfigResources() {
+        return configResources;
+    }
+
+    public void setConfigResources(List<Resource> configResources) {
+        this.configResources = configResources;
     }
 
     /**

@@ -1,5 +1,9 @@
 package com.sse.myhbase.util;
 
+import com.sse.myhbase.core.Nullable;
+
+import java.util.Map;
+
 /**
  * @Author: Cai Shunda
  * @Description: 字符相关
@@ -22,4 +26,34 @@ public class StringUtil {
      * @Date: 11:12 2017/11/8
      */
     public static boolean isNotEmptyString(String str) {return !isEmptyString(str);}
+
+    /**
+     * @Author: Cai Shunda
+     * @Description: 往字符串追加key-value，形式是$key=$value
+     * @Date: 22:28 2017/11/13
+     */
+    public static void appendKeyValue(StringBuilder sb, @Nullable String msg, String key, String value)  {
+        Util.checkNull(sb);
+        if (isNotEmptyString(msg)) {
+            sb.append("#" +msg + "#\n");
+        }
+        sb.append(key + "=" + value + "\n");
+    }
+
+    /**
+     * @Author: Cai Shunda
+     * @Description: 往字符串里面追加Map的key-value，形式是$key=$value
+     * @Date: 22:37 2017/11/13
+     */
+    public static void appendMap(StringBuilder sb, @Nullable String msg, Map<String,String> map) {
+        Util.checkNull(sb);
+        if (isNotEmptyString(msg)) {
+            sb.append("#" +msg + "#\n");
+        }
+        if (map != null) {
+            for (String key : map.keySet()) {
+                sb.append(key + "=" + map.get(key) + "\n");
+            }
+        }
+    }
 }

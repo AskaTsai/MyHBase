@@ -101,4 +101,11 @@ public class HBaseTableConfig {
         }
     }
 
+    public Resource getConfigResource() {
+        return configResource;
+    }
+
+    public void setConfigResource(Resource configResource) {
+        this.configResource = configResource;
+    }
 }
