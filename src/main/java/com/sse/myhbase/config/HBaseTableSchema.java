@@ -143,4 +143,19 @@ public class HBaseTableSchema {
         this.rowKeyHandlerName = rowKeyHandlerName;
     }
 
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        sb.append("\n==================HBaseTableConfig==================\n");
+        StringUtil.appendKeyValue(sb, null, "tableName", tableName);
+        StringUtil.appendKeyValue(sb, null, "defaultFamily", defaultFamily);
+        StringUtil.appendKeyValue(sb, null, "rowkeyHandlerName", rowKeyHandlerName);
+        for (Map<String, HBaseColumnSchema> tmp :coloumSchemas.values()) {
+            for (HBaseColumnSchema columnSchema : tmp.values()) {
+                StringUtil.appendKeyValue(sb, null, "columnSchema", columnSchema.toString());
+            }
+        }
+        sb.append("==================HBaseTableConfig==================");
+        return sb.toString();
+    }
 }

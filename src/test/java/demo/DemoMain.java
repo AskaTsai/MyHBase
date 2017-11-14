@@ -63,4 +63,6 @@ public class DemoMain {
         hBaseAdmin.close();
         System.out.println("表创建完成！！");
     }
+
+
 }

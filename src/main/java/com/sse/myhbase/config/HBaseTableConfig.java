@@ -70,11 +70,10 @@ public class HBaseTableConfig {
             List<Node> TypeInfoNodes = XmlUtil.findTopLevelNodes(
                     configResource.getInputStream(), "MappingType");
             for(Node typeInfoNode : TypeInfoNodes){
-                TypeInfo typeInfo = TypeInfo.parseNode(typeInfoNode, hBaseTableSchema);
+                #@#@#TypeInfo typeInfo = TypeInfo.parseNode(typeInfoNode, hBaseTableSchema);
                 addTypeInfo(typeInfo);
             }
 
-            //需要重写toString
             logger.info(this);
         } catch (Exception e) {
             logger.error("parse config error.", e);
@@ -99,6 +98,13 @@ public class HBaseTableConfig {
         for(HBaseQuery hBaseQuery : hBaseQueries){
             hbaseQueryMap.put(hBaseQuery.getId(), hBaseQuery);
         }
+    }
+
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        sb.append(hBaseTableSchema.toString());
+        return sb.toString();
     }
 
     public Resource getConfigResource() {

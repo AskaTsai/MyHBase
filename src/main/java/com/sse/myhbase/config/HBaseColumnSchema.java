@@ -81,7 +81,7 @@ public class HBaseColumnSchema {
 
             if (StringUtil.isEmptyString(typeHandlerName)) {
                 typeHandler = DefaultTypeHandlers.findDefaultTypeHandler(type);
-                typeHandlerName = typeName.getClass().getName();
+                typeHandlerName = typeHandler.getClass().getName();
             } else {
                 typeHandler = TypeHandlerHolder.findTypeHandler(typeHandlerName);
             }
@@ -94,6 +94,16 @@ public class HBaseColumnSchema {
             throw new MyHBaseException("init coloum schema error", e);
         }
 
+    }
+
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        sb.append("[family=" + family + ", ");
+        sb.append("qualifier=" + qualifier + ", ");
+        sb.append("typeName=" + typeName + ", ");
+        sb.append("typeHandlerName=" + typeHandlerName + "]");
+        return sb.toString();
     }
 
     public String getFamily() {

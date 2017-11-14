@@ -119,8 +119,7 @@ public class HBaseDataSource {
             initHBaseConfiguration();
             initConnection();
             initHTablePoolService();
-            System.out.println(this);
-            logger.info(this);
+            logger.info(this);//
         } catch (Exception e) {
             logger.error("HBaseDataSource init error.", e);
             throw new MyHBaseException("HBaseDataSource init error.", e);
@@ -218,10 +217,10 @@ public class HBaseDataSource {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("\n===========HBaseDataSource==============\n");
+        sb.append("\n==============HBaseDataSource=================\n");
         StringUtil.appendKeyValue(sb, "ID" , "id" , id);
         StringUtil.appendMap(sb, "FINAL HBASE CONFIGURATION", finalHBaseConfig);
-        sb.append("===========HBaseDataSource==============\n");
+        sb.append("===============HBaseDataSource=================\n");
         return sb.toString();
     }
 
