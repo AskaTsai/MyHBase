@@ -80,7 +80,7 @@ public class TypeInfo {
     public void init(){
        Util.checkNull(type);
        Util.checkNull(columnInfos);
-       Util.check(!columnInfoMap.isEmpty());
+       Util.check(!columnInfos.isEmpty());
 
        int versionFieldCounter = 0;
        for (ColumnInfo columnInfo : columnInfos) {
@@ -101,6 +101,20 @@ public class TypeInfo {
     //?
     public boolean isVersionedType() {
         return versionedColumnInfo != null;
+    }
+
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        sb.append("\n==============" + this.getClass() + "==============\n");
+        StringUtil.appendKeyValue(sb, null,"type", type);
+        StringUtil.appendKeyValue(sb, null, "versionedColumnInfo", versionedColumnInfo);
+        for (ColumnInfo columnInfo : columnInfos) {
+            StringUtil.appendKeyValue(sb, null, "field", columnInfo);
+        }
+        sb.append("=============" + this.getClass() + "==============");
+
+        return sb.toString();
     }
 
     public Class<?> getType() {

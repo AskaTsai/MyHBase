@@ -90,4 +90,10 @@ public class ColumnInfo {
         return columnInfo;
 
     }
+
+    @Override
+    public String toString() {
+        return "[type=" + type + " field=" + field + " family=" + family
+                + " qualifier=" + qualifier + " isVersioned=" + isVersioned + "]";
+    }
 }

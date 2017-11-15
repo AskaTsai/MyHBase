@@ -70,7 +70,7 @@ public class HBaseTableConfig {
             List<Node> TypeInfoNodes = XmlUtil.findTopLevelNodes(
                     configResource.getInputStream(), "MappingType");
             for(Node typeInfoNode : TypeInfoNodes){
-                #@#@#TypeInfo typeInfo = TypeInfo.parseNode(typeInfoNode, hBaseTableSchema);
+                TypeInfo typeInfo = TypeInfo.parseNode(typeInfoNode, hBaseTableSchema);
                 addTypeInfo(typeInfo);
             }
 

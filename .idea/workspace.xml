@@ -2,16 +2,14 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d74699a0-c643-4f4f-b820-da3ab3cad02a" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/resources/log4j.properties" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/sse/myhbase/config/HBaseDataSource$1.class" afterPath="$PROJECT_DIR$/target/classes/com/sse/myhbase/config/HBaseDataSource$1.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/sse/myhbase/config/HBaseDataSource$PoolType.class" afterPath="$PROJECT_DIR$/target/classes/com/sse/myhbase/config/HBaseDataSource$PoolType.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/sse/myhbase/config/HBaseDataSource.class" afterPath="$PROJECT_DIR$/target/classes/com/sse/myhbase/config/HBaseDataSource.class" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/test/java/demo/Student.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/sse/myhbase/config/HBaseTableConfig.class" afterPath="$PROJECT_DIR$/target/classes/com/sse/myhbase/config/HBaseTableConfig.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/sse/myhbase/config/HBaseColumnSchema.java" afterPath="$PROJECT_DIR$/src/main/java/com/sse/myhbase/config/HBaseColumnSchema.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/sse/myhbase/config/HBaseDataSource.java" afterPath="$PROJECT_DIR$/src/main/java/com/sse/myhbase/config/HBaseDataSource.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/config/hbasetable.xml" afterPath="$PROJECT_DIR$/src/config/hbasetable.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/sse/myhbase/client/ColumnInfo.java" afterPath="$PROJECT_DIR$/src/main/java/com/sse/myhbase/client/ColumnInfo.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/sse/myhbase/client/TypeInfo.java" afterPath="$PROJECT_DIR$/src/main/java/com/sse/myhbase/client/TypeInfo.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/sse/myhbase/config/HBaseTableConfig.java" afterPath="$PROJECT_DIR$/src/main/java/com/sse/myhbase/config/HBaseTableConfig.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/sse/myhbase/config/HBaseTableSchema.java" afterPath="$PROJECT_DIR$/src/main/java/com/sse/myhbase/config/HBaseTableSchema.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/java/demo/DemoMain.java" afterPath="$PROJECT_DIR$/src/test/java/demo/DemoMain.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/sse/myhbase/util/StringUtil.java" afterPath="$PROJECT_DIR$/src/main/java/com/sse/myhbase/util/StringUtil.java" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -24,11 +22,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="HBaseTableConfig.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="HBaseTableConfig.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/sse/myhbase/config/HBaseTableConfig.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="131">
-              <caret line="72" column="21" lean-forward="false" selection-start-line="72" selection-start-column="21" selection-end-line="72" selection-end-column="21" />
+            <state relative-caret-position="83">
+              <caret line="84" column="33" lean-forward="true" selection-start-line="84" selection-start-column="33" selection-end-line="84" selection-end-column="33" />
               <folding />
             </state>
           </provider>
@@ -37,8 +35,28 @@
       <file leaf-file-name="HBaseTableSchema.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/sse/myhbase/config/HBaseTableSchema.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="50">
-              <caret line="113" column="54" lean-forward="true" selection-start-line="113" selection-start-column="54" selection-end-line="113" selection-end-column="54" />
+            <state relative-caret-position="225">
+              <caret line="101" column="0" lean-forward="false" selection-start-line="101" selection-start-column="0" selection-end-line="101" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="TypeInfo.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/sse/myhbase/client/TypeInfo.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="131">
+              <caret line="112" column="67" lean-forward="false" selection-start-line="112" selection-start-column="67" selection-end-line="112" selection-end-column="67" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ColumnInfo.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/sse/myhbase/client/ColumnInfo.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="355">
+              <caret line="96" column="80" lean-forward="false" selection-start-line="96" selection-start-column="80" selection-end-line="96" selection-end-column="80" />
               <folding />
             </state>
           </provider>
@@ -47,8 +65,8 @@
       <file leaf-file-name="HBaseColumnSchema.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/sse/myhbase/config/HBaseColumnSchema.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="195">
-              <caret line="83" column="45" lean-forward="false" selection-start-line="83" selection-start-column="45" selection-end-line="83" selection-end-column="45" />
+            <state relative-caret-position="113">
+              <caret line="96" column="0" lean-forward="false" selection-start-line="96" selection-start-column="0" selection-end-line="96" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -57,18 +75,8 @@
       <file leaf-file-name="DefaultTypeHandlers.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/sse/myhbase/type/DefaultTypeHandlers.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="272">
-              <caret line="34" column="34" lean-forward="true" selection-start-line="34" selection-start-column="34" selection-end-line="34" selection-end-column="34" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="HBaseDataSource.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/sse/myhbase/config/HBaseDataSource.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="3045">
-              <caret line="222" column="58" lean-forward="false" selection-start-line="222" selection-start-column="58" selection-end-line="222" selection-end-column="58" />
+            <state relative-caret-position="420">
+              <caret line="34" column="34" lean-forward="false" selection-start-line="34" selection-start-column="34" selection-end-line="34" selection-end-column="34" />
               <folding />
             </state>
           </provider>
@@ -77,8 +85,8 @@
       <file leaf-file-name="StringUtil.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/sse/myhbase/util/StringUtil.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="690">
-              <caret line="50" column="23" lean-forward="false" selection-start-line="50" selection-start-column="23" selection-end-line="50" selection-end-column="23" />
+            <state relative-caret-position="294">
+              <caret line="39" column="35" lean-forward="false" selection-start-line="39" selection-start-column="35" selection-end-line="39" selection-end-column="35" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -89,8 +97,8 @@
       <file leaf-file-name="DemoMain.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/test/java/demo/DemoMain.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="335">
-              <caret line="51" column="44" lean-forward="false" selection-start-line="51" selection-start-column="44" selection-end-line="51" selection-end-column="44" />
+            <state relative-caret-position="140">
+              <caret line="38" column="0" lean-forward="false" selection-start-line="38" selection-start-column="0" selection-end-line="38" selection-end-column="0" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -98,21 +106,21 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="HBaseService.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/sse/myhbase/client/service/HBaseService.java">
+      <file leaf-file-name="hbasetable.xml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/config/hbasetable.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="345">
-              <caret line="24" column="22" lean-forward="false" selection-start-line="24" selection-start-column="22" selection-end-line="24" selection-end-column="22" />
+            <state relative-caret-position="120">
+              <caret line="8" column="40" lean-forward="false" selection-start-line="8" selection-start-column="40" selection-end-line="8" selection-end-column="40" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="hbasetable.xml" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/config/hbasetable.xml">
+      <file leaf-file-name="Student.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/test/java/demo/Student.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="75">
-              <caret line="5" column="67" lean-forward="false" selection-start-line="5" selection-start-column="67" selection-end-line="5" selection-end-column="67" />
+            <state relative-caret-position="225">
+              <caret line="15" column="12" lean-forward="true" selection-start-line="15" selection-start-column="12" selection-end-line="15" selection-end-column="12" />
               <folding />
             </state>
           </provider>
@@ -146,7 +154,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/main/java/com/sse/myhbase/client/rowkey/BytesRowKey.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/sse/myhbase/client/RowKey.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/sse/myhbase/util/CalssUtil.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/sse/myhbase/client/rowkey/handler/RowKeyHandlerHolder.java" />
@@ -175,8 +182,6 @@
         <option value="$PROJECT_DIR$/src/main/java/com/sse/myhbase/hql/HQLNodeParse.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/sse/myhbase/util/XmlUtil.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/sse/myhbase/util/CollectionUtil.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/sse/myhbase/client/ColumnInfo.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/sse/myhbase/client/TypeInfo.java" />
         <option value="$PROJECT_DIR$/src/config/zk_conf" />
         <option value="$PROJECT_DIR$/src/main/java/com/sse/myhbase/client/service/HBaseDataSourceAware.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/sse/myhbase/client/service/HBaseTableConfigAware.java" />
@@ -188,15 +193,18 @@
         <option value="$PROJECT_DIR$/pom.xml" />
         <option value="$PROJECT_DIR$/src/main/java/com/sse/myhbase/config/resource/CachedFileSystemResource.java" />
         <option value="$PROJECT_DIR$/src/test/java/demo/Gender.java" />
-        <option value="$PROJECT_DIR$/src/config/hbasetable.xml" />
-        <option value="$PROJECT_DIR$/src/main/java/com/sse/myhbase/util/StringUtil.java" />
         <option value="$PROJECT_DIR$/src/log4j.properties" />
         <option value="$PROJECT_DIR$/src/test/java/demo/DemoMain.java" />
         <option value="$PROJECT_DIR$/src/main/resources/log4j.properties" />
         <option value="$PROJECT_DIR$/src/main/java/com/sse/myhbase/config/HBaseDataSource.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/sse/myhbase/config/HBaseTableSchema.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/sse/myhbase/config/HBaseColumnSchema.java" />
+        <option value="$PROJECT_DIR$/src/config/hbasetable.xml" />
+        <option value="$PROJECT_DIR$/src/test/java/demo/Student.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/sse/myhbase/util/StringUtil.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/sse/myhbase/config/HBaseTableConfig.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/sse/myhbase/client/ColumnInfo.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/sse/myhbase/client/TypeInfo.java" />
       </list>
     </option>
   </component>
@@ -266,6 +274,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="PackagesPane" />
       <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
@@ -279,13 +288,39 @@
               <item name="myhbase" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
             </path>
+            <path>
+              <item name="myhbase" type="b2602c69:ProjectViewProjectNode" />
+              <item name="myhbase" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="config" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="myhbase" type="b2602c69:ProjectViewProjectNode" />
+              <item name="myhbase" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="test" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="myhbase" type="b2602c69:ProjectViewProjectNode" />
+              <item name="myhbase" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="test" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="myhbase" type="b2602c69:ProjectViewProjectNode" />
+              <item name="myhbase" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="test" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="demo" type="462c0819:PsiDirectoryNode" />
+            </path>
           </expand>
           <select />
         </subPane>
       </pane>
-      <pane id="AndroidView" />
       <pane id="Scope" />
-      <pane id="PackagesPane" />
+      <pane id="AndroidView" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -461,44 +496,45 @@
       <workItem from="1510663530844" duration="313000" />
       <workItem from="1510663951667" duration="223000" />
       <workItem from="1510667781962" duration="1058000" />
-      <workItem from="1510669112038" duration="2075000" />
+      <workItem from="1510669112038" duration="2155000" />
+      <workItem from="1510709805070" duration="4139000" />
     </task>
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="DemoMain_testCreatTable - 2017.11.14 at 18h 20m 38s.xml">
+    <history-entry file="DemoMain_testCreatTable - 2017.11.15 at 22h 27m 03s.xml">
       <configuration name="DemoMain.testCreatTable" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="DemoMain_testCreatTable - 2017.11.14 at 18h 25m 58s.xml">
+    <history-entry file="DemoMain_testCreatTable - 2017.11.15 at 22h 28m 24s.xml">
       <configuration name="DemoMain.testCreatTable" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="DemoMain_testCreatTable - 2017.11.14 at 20h 35m 16s.xml">
+    <history-entry file="DemoMain_testCreatTable - 2017.11.15 at 22h 31m 00s.xml">
       <configuration name="DemoMain.testCreatTable" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="DemoMain_testCreatTable - 2017.11.14 at 22h 04m 57s.xml">
+    <history-entry file="DemoMain_testCreatTable - 2017.11.15 at 22h 33m 11s.xml">
       <configuration name="DemoMain.testCreatTable" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="DemoMain_testCreatTable - 2017.11.14 at 22h 31m 13s.xml">
+    <history-entry file="DemoMain_testCreatTable - 2017.11.15 at 22h 38m 58s.xml">
       <configuration name="DemoMain.testCreatTable" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="DemoMain_testCreatTable - 2017.11.14 at 22h 34m 19s.xml">
+    <history-entry file="DemoMain_testCreatTable - 2017.11.15 at 22h 42m 45s.xml">
       <configuration name="DemoMain.testCreatTable" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="DemoMain_testCreatTable - 2017.11.14 at 22h 35m 23s.xml">
+    <history-entry file="DemoMain_testCreatTable - 2017.11.15 at 22h 42m 59s.xml">
       <configuration name="DemoMain.testCreatTable" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="DemoMain_testCreatTable - 2017.11.14 at 22h 35m 53s.xml">
+    <history-entry file="DemoMain_testCreatTable - 2017.11.15 at 22h 43m 32s.xml">
       <configuration name="DemoMain.testCreatTable" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="DemoMain_testCreatTable - 2017.11.14 at 22h 41m 30s.xml">
+    <history-entry file="DemoMain_testCreatTable - 2017.11.15 at 22h 44m 16s.xml">
       <configuration name="DemoMain.testCreatTable" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="DemoMain_testCreatTable - 2017.11.14 at 22h 41m 50s.xml">
+    <history-entry file="DemoMain_testCreatTable - 2017.11.15 at 22h 47m 55s.xml">
       <configuration name="DemoMain.testCreatTable" configurationId="JUnit" />
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="93280000" />
+    <option name="totallyTimeSpent" value="97499000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1280" height="800" extended-state="0" />
@@ -513,19 +549,19 @@
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3287483" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.37689134" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.38514444" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.20840065" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.20840065" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Tail" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24959612" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.46905088" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.31774417" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -545,37 +581,13 @@
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/sse/myhbase/config/HBaseColumnSchema.java</url>
-          <line>82</line>
+          <url>file://$PROJECT_DIR$/src/main/java/com/sse/myhbase/client/TypeInfo.java</url>
+          <line>108</line>
           <properties />
-          <option name="timeStamp" value="1" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/sse/myhbase/config/HBaseColumnSchema.java</url>
-          <line>83</line>
-          <properties />
-          <option name="timeStamp" value="6" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/sse/myhbase/config/HBaseColumnSchema.java</url>
-          <line>88</line>
-          <properties />
-          <option name="timeStamp" value="10" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/sse/myhbase/config/HBaseColumnSchema.java</url>
-          <line>89</line>
-          <properties />
-          <option name="timeStamp" value="12" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/sse/myhbase/config/HBaseColumnSchema.java</url>
-          <line>81</line>
-          <properties />
-          <option name="timeStamp" value="13" />
+          <option name="timeStamp" value="15" />
         </line-breakpoint>
       </breakpoints>
-      <option name="time" value="14" />
+      <option name="time" value="18" />
     </breakpoint-manager>
     <watches-manager />
   </component>
@@ -584,13 +596,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/sse/myhbase/client/rowkey/BytesRowKey.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="195">
-          <caret line="17" column="11" lean-forward="false" selection-start-line="17" selection-start-column="11" selection-end-line="17" selection-end-column="11" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/sse/myhbase/client/rowkey/handler/RowKeyHandlerHolder.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="345">
@@ -717,20 +722,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/sse/myhbase/client/ColumnInfo.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="990">
-          <caret line="75" column="72" lean-forward="false" selection-start-line="75" selection-start-column="72" selection-end-line="75" selection-end-column="72" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/sse/myhbase/client/TypeInfo.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1365">
-          <caret line="105" column="31" lean-forward="false" selection-start-line="105" selection-start-column="31" selection-end-line="105" selection-end-column="31" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/sse/myhbase/config/resource.java" />
     <entry file="jar:///Library/Java/JavaVirtualMachines/jdk1.7.0_79.jdk/Contents/Home/src.zip!/java/io/InputStream.java">
       <provider selected="true" editor-type-id="text-editor">
@@ -854,28 +845,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/sse/myhbase/util/StringUtil.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="690">
-          <caret line="50" column="23" lean-forward="false" selection-start-line="50" selection-start-column="23" selection-end-line="50" selection-end-column="23" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/sse/myhbase/client/service/HBaseService.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="345">
           <caret line="24" column="22" lean-forward="false" selection-start-line="24" selection-start-column="22" selection-end-line="24" selection-end-column="22" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/config/hbasetable.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="75">
-          <caret line="5" column="67" lean-forward="false" selection-start-line="5" selection-start-column="67" selection-end-line="5" selection-end-column="67" />
           <folding />
         </state>
       </provider>
@@ -896,52 +869,93 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/sse/myhbase/config/HBaseTableSchema.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="50">
-          <caret line="113" column="54" lean-forward="true" selection-start-line="113" selection-start-column="54" selection-end-line="113" selection-end-column="54" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/sse/myhbase/util/ClassUtil.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="683">
           <caret line="88" column="22" lean-forward="false" selection-start-line="88" selection-start-column="12" selection-end-line="88" selection-end-column="22" />
-          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/sse/myhbase/type/DefaultTypeHandlers.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
-          <caret line="34" column="34" lean-forward="true" selection-start-line="34" selection-start-column="34" selection-end-line="34" selection-end-column="34" />
+        <state relative-caret-position="420">
+          <caret line="34" column="34" lean-forward="false" selection-start-line="34" selection-start-column="34" selection-end-line="34" selection-end-column="34" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/sse/myhbase/config/HBaseColumnSchema.java">
+    <entry file="file://$PROJECT_DIR$/src/test/java/demo/Student.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="195">
-          <caret line="83" column="45" lean-forward="false" selection-start-line="83" selection-start-column="45" selection-end-line="83" selection-end-column="45" />
+        <state relative-caret-position="225">
+          <caret line="15" column="12" lean-forward="true" selection-start-line="15" selection-start-column="12" selection-end-line="15" selection-end-column="12" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/demo/DemoMain.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/sse/myhbase/util/StringUtil.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="335">
-          <caret line="51" column="44" lean-forward="false" selection-start-line="51" selection-start-column="44" selection-end-line="51" selection-end-column="44" />
+        <state relative-caret-position="294">
+          <caret line="39" column="35" lean-forward="false" selection-start-line="39" selection-start-column="35" selection-end-line="39" selection-end-column="35" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/sse/myhbase/config/HBaseColumnSchema.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="113">
+          <caret line="96" column="0" lean-forward="false" selection-start-line="96" selection-start-column="0" selection-end-line="96" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/sse/myhbase/config/HBaseTableSchema.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="225">
+          <caret line="101" column="0" lean-forward="false" selection-start-line="101" selection-start-column="0" selection-end-line="101" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/sse/myhbase/config/HBaseTableConfig.java">
       <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="83">
+          <caret line="84" column="33" lean-forward="true" selection-start-line="84" selection-start-column="33" selection-end-line="84" selection-end-column="33" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/demo/DemoMain.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="140">
+          <caret line="38" column="0" lean-forward="false" selection-start-line="38" selection-start-column="0" selection-end-line="38" selection-end-column="0" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/config/hbasetable.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="120">
+          <caret line="8" column="40" lean-forward="false" selection-start-line="8" selection-start-column="40" selection-end-line="8" selection-end-column="40" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/sse/myhbase/client/ColumnInfo.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="355">
+          <caret line="96" column="80" lean-forward="false" selection-start-line="96" selection-start-column="80" selection-end-line="96" selection-end-column="80" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/sse/myhbase/client/TypeInfo.java">
+      <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="131">
-          <caret line="72" column="21" lean-forward="false" selection-start-line="72" selection-start-column="21" selection-end-line="72" selection-end-column="21" />
+          <caret line="112" column="67" lean-forward="false" selection-start-line="112" selection-start-column="67" selection-end-line="112" selection-end-column="67" />
           <folding />
         </state>
       </provider>

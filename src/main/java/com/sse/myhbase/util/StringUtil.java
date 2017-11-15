@@ -32,7 +32,7 @@ public class StringUtil {
      * @Description: 往字符串追加key-value，形式是$key=$value
      * @Date: 22:28 2017/11/13
      */
-    public static void appendKeyValue(StringBuilder sb, @Nullable String msg, String key, String value)  {
+    public static void appendKeyValue(StringBuilder sb, @Nullable String msg, String key, Object value)  {
         Util.checkNull(sb);
         if (isNotEmptyString(msg)) {
             sb.append("#" +msg + "#\n");
