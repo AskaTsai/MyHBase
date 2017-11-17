@@ -4,6 +4,7 @@ import com.sse.myhbase.client.TypeInfo;
 import com.sse.myhbase.exception.MyHBaseException;
 import com.sse.myhbase.hql.HBaseQuery;
 import com.sse.myhbase.util.CollectionUtil;
+import com.sse.myhbase.util.StringUtil;
 import com.sse.myhbase.util.Util;
 import com.sse.myhbase.util.XmlUtil;
 import org.apache.log4j.Logger;
@@ -12,6 +13,7 @@ import org.w3c.dom.Node;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
 
 /**
@@ -83,7 +85,6 @@ public class HBaseTableConfig {
     }
 
     private void addTypeInfo(TypeInfo typeInfo) {
-        //需要重写toString
         logger.info("register TypeInfo\n" + typeInfo);
         mappingTypes.putIfAbsent(typeInfo.getType(), typeInfo);
     }
@@ -100,6 +101,17 @@ public class HBaseTableConfig {
         }
     }
 
+    public boolean isAutoCreate() {
+        return hBaseTableSchema.isAutoCreate();
+    }
+
+    public List<String> getAllConfigedFamilys() {
+        Set<String> familySet = hBaseTableSchema.getAllConfigedFamilys();
+        List<String> result = new ArrayList<>();
+        result.addAll(familySet);
+        return result;
+    }
+
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
@@ -107,11 +119,16 @@ public class HBaseTableConfig {
         return sb.toString();
     }
 
+
     public Resource getConfigResource() {
         return configResource;
     }
 
     public void setConfigResource(Resource configResource) {
         this.configResource = configResource;
+    }
+
+    public HBaseTableSchema gethBaseTableSchema() {
+        return hBaseTableSchema;
     }
 }

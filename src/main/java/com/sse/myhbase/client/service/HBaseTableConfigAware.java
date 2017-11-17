@@ -11,4 +11,13 @@ import com.sse.myhbase.config.HBaseTableConfig;
 public interface HBaseTableConfigAware {
     public HBaseTableConfig getHBaseTableConfig();
     public void setHBaseTableConfig(HBaseTableConfig hBaseTableConfig);
+    /**
+     * @Author: Cai Shunda
+     * @Description: 是否需要自动创建表
+     * @Date: 19:53 2017/11/17
+     */
+    public boolean isAutoCreate();
+
+    public void autoCreateTable();
+
 }

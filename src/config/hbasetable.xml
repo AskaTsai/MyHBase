@@ -1,6 +1,6 @@
 <MyHbase>
-    <HBaseTableSchema tableName="MyTestTableName" defaultFamily="MyDefaultFamily">
-        <HBaseColumnSchema qualifier="id" typeName="int" />
+    <HBaseTableSchema tableName="MyTestTableName" defaultFamily="MyDefaultFamily" isAutoCreate="true">
+        <HBaseColumnSchema qualifier="id" typeName="int"  family="MyRecordFamily"/>
         <HBaseColumnSchema qualifier="name" typeName="string" />
         <HBaseColumnSchema qualifier="date" typeName="date" />
         <HBaseColumnSchema qualifier="gender" typeName="demo.Gender" />

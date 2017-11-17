@@ -10,9 +10,7 @@ import com.sse.myhbase.util.StringUtil;
 import com.sse.myhbase.util.Util;
 import org.apache.hadoop.hbase.util.Bytes;
 
-import java.util.List;
-import java.util.Map;
-import java.util.TreeMap;
+import java.util.*;
 
 /**
  * @Author: Cai Shunda
@@ -37,6 +35,13 @@ public class HBaseTableSchema {
     private String defaultFamily;
 
     /**
+     * 用于设置该表如果HBase没有的话可不可以自动创建 true/false
+     */
+    @ConfigAttr
+    @Nullable
+    private String autoCreate;
+
+    /**
      * 行键句柄，可以为空
      */
     @ConfigAttr
@@ -53,6 +58,11 @@ public class HBaseTableSchema {
      * 默认列族bytes
      */
     private byte[] defaultFamilyBytes;
+
+    /**
+     * 是否自动创建表，默认false
+     */
+    private boolean isAutoCreate = false;
 
     /**
      * 列的schema  map的规则Qualifier->Family-> HBaseColumnSchema.
@@ -73,6 +83,15 @@ public class HBaseTableSchema {
 
         if (StringUtil.isNotEmptyString(defaultFamily)) {
             defaultFamilyBytes = Bytes.toBytes(defaultFamily);
+        }
+
+        if (StringUtil.isNotEmptyString(autoCreate)
+                && !"true".equalsIgnoreCase(autoCreate)
+                && !"false".equalsIgnoreCase(autoCreate)) {
+            throw new MyHBaseException("wrong value " + autoCreate + " for attribute isAutoCreate in HBaseTableSchema.");
+        }
+        if ("true".equalsIgnoreCase(autoCreate)) {
+            isAutoCreate = true;
         }
 
         if (StringUtil.isEmptyString(rowKeyHandlerName)) {
@@ -119,6 +138,26 @@ public class HBaseTableSchema {
                 "with specified qualifier = " + qualifier);
     }
 
+    /**
+     * @Author: Cai Shunda
+     * @Description: 获取所有配置的列族,去重
+     * @Date: 21:17 2017/11/17
+     */
+    public Set<String> getAllConfigedFamilys() {
+        Set<String> familys = new HashSet<>();
+        if (StringUtil.isNotEmptyString(defaultFamily)) {
+            familys.add(defaultFamily);
+        }
+
+        for (Map<String, HBaseColumnSchema> tmp :coloumSchemas.values()) {
+            for (String family: tmp.keySet()) {
+                familys.add(family);
+            }
+        }
+
+        return familys;
+    }
+
     public String getTableName() {
         return tableName;
     }
@@ -135,6 +174,14 @@ public class HBaseTableSchema {
         this.defaultFamily = defaultFamily;
     }
 
+    public String getAutoCreate() {
+        return autoCreate;
+    }
+
+    public void setAutoCreate(String autoCreate) {
+        this.autoCreate = autoCreate;
+    }
+
     public String getRowKeyHandlerName() {
         return rowKeyHandlerName;
     }
@@ -142,6 +189,8 @@ public class HBaseTableSchema {
     public void setRowKeyHandlerName(String rowKeyHandlerName) {
         this.rowKeyHandlerName = rowKeyHandlerName;
     }
+
+    public boolean isAutoCreate() {return this.isAutoCreate;}
 
     @Override
     public String toString() {

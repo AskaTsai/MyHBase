@@ -2,8 +2,12 @@ package com.sse.myhbase.client;
 
 import com.sse.myhbase.config.HBaseDataSource;
 import com.sse.myhbase.config.HBaseTableConfig;
+import com.sse.myhbase.config.HBaseTableSchema;
+import com.sse.myhbase.util.StringUtil;
 import org.apache.hadoop.hbase.client.HBaseAdmin;
 import org.apache.hadoop.hbase.client.HTable;
+
+import java.util.ArrayList;
 
 /**
  * @Author: Cai Shunda
@@ -49,4 +53,11 @@ abstract public class MyHBaseClientBase implements MyHBaseClient{
     public void setHBaseTableConfig(HBaseTableConfig hBaseTableConfig) {
         this.hBaseTableConfig = hBaseTableConfig;
     }
+
+    @Override
+    public boolean isAutoCreate() {
+        return hBaseTableConfig.isAutoCreate();
+    }
+
+
 }

@@ -35,12 +35,13 @@ public class HBaseTableConfigParser {
         tableSchema.setTableName(XmlUtil.getAttribute(hbaseTableSchemaNode, "tableName"));
         tableSchema.setDefaultFamily(XmlUtil.getAttribute(hbaseTableSchemaNode, "defaultFamily"));
         tableSchema.setRowKeyHandlerName(XmlUtil.getAttribute(hbaseTableSchemaNode, "rowKeyHandlerName"));
+        tableSchema.setAutoCreate(XmlUtil.getAttribute(hbaseTableSchemaNode, "isAutoCreate"));
 
         //HBaseColumnSchema
         NodeList nodeList = hbaseTableSchemaNode.getChildNodes();
         for (int i = 0; i < nodeList.getLength(); i++) {
             Node node = nodeList.item(i);
-            if (!node.getNodeName().equals("HBaseColumnSchema")) {
+            if (!"HBaseColumnSchema".equals(node.getNodeName())) {
                 continue;
             }
             HBaseColumnSchema hBaseColumnSchema = new HBaseColumnSchema();

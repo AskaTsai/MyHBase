@@ -45,24 +45,29 @@ public class DemoMain {
 
         return client;
     }
-
     @Test
-    public void testCreatTable() throws IOException {
+    public void deleteTable() {
         MyHBaseClient client = getMyHBaseClient();
-        HBaseAdmin hBaseAdmin = client.getHBaseAdmin();
-        if (hBaseAdmin.tableExists("people")) {
-            System.out.println("表已经存在");
-            return;
-        }
+        client.deleteTable("people");
+        client.deleteTable("student");
+        client.deleteTable("testtable");
+        client.deleteTable("MyTestTableName");
+    }
+    @Test
+    public void testCreateTable() {
+        MyHBaseClient client = getMyHBaseClient();
         HTableDescriptor htd = new HTableDescriptor(TableName.valueOf("people"));
         HColumnDescriptor hcd_info = new HColumnDescriptor("info");
         htd.addFamily(hcd_info);
         htd.addFamily(new HColumnDescriptor("data"));
         hcd_info.setMaxVersions(3);
-        hBaseAdmin.createTable(htd);
-        hBaseAdmin.close();
-        System.out.println("表创建完成！！");
+        client.createTable(htd);
     }
 
+    @Test
+    public void testAutoCreateTable() {
+        MyHBaseClient client = getMyHBaseClient();
+        client.autoCreateTable();
+    }
 
 }
