@@ -14,6 +14,7 @@ import org.springframework.core.io.Resource;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -54,7 +55,7 @@ public class DemoMain {
         client.deleteTable("MyTestTableName");
     }
     @Test
-    public void testCreateTable() {
+    public void createTable() {
         MyHBaseClient client = getMyHBaseClient();
         HTableDescriptor htd = new HTableDescriptor(TableName.valueOf("people"));
         HColumnDescriptor hcd_info = new HColumnDescriptor("info");
@@ -65,9 +66,21 @@ public class DemoMain {
     }
 
     @Test
-    public void testAutoCreateTable() {
+    public void autoCreateTable() {
         MyHBaseClient client = getMyHBaseClient();
         client.autoCreateTable();
+    }
+
+    @Test
+    public void putObjectWithXML() {
+        MyHBaseClient client = getMyHBaseClient();
+        Student student = new Student();
+        student.setId(1510122511);
+        student.setAge(25);
+        student.setDate(new Date());
+        student.setGender(Gender.FEMALE);
+        student.setName("蔡顺达");
+        client.putObject(new StudentRowKey(110) ,student);
     }
 
 }

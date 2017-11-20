@@ -6,7 +6,7 @@
         <HBaseColumnSchema qualifier="gender" typeName="demo.Gender" />
         <HBaseColumnSchema qualifier="age" typeName="int" />
     </HBaseTableSchema>
-    <MappingType className="demo.Student" defaultFamily="MyRecordFamily">
+    <MappingType className="demo.Student" defaultFamily="MyDefaultFamily">
         <field name="id" qualifier="id" family="MyRecordFamily"
                isVersioned="false" />
         <field name="name" qualifier="name" />

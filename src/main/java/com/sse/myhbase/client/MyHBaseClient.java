@@ -1,9 +1,6 @@
 package com.sse.myhbase.client;
 
-import com.sse.myhbase.client.service.HBaseAdminService;
-import com.sse.myhbase.client.service.HBaseDataSourceAware;
-import com.sse.myhbase.client.service.HBaseService;
-import com.sse.myhbase.client.service.HBaseTableConfigAware;
+import com.sse.myhbase.client.service.*;
 
 /**
  * @Author: Cai Shunda
@@ -12,5 +9,5 @@ import com.sse.myhbase.client.service.HBaseTableConfigAware;
  * @Modified by:
  */
 public interface MyHBaseClient extends HBaseTableConfigAware,
-        HBaseDataSourceAware, HBaseService, HBaseAdminService{
+        HBaseDataSourceAware, HBaseService, HBaseAdminService, BasicService{
 }

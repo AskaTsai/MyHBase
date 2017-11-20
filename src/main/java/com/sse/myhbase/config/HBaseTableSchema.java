@@ -122,6 +122,23 @@ public class HBaseTableSchema {
 
     /**
      * @Author: Cai Shunda
+     * @Description: 通过family和qualifier找到HBaseColumnSchema
+     * @Param:
+     * @Date: 21:36 2017/11/20
+     */
+    public HBaseColumnSchema findColumnSchema(String family, String qualifier) {
+        Util.checkEmptyString(family);
+        Util.checkEmptyString(qualifier);
+
+        HBaseColumnSchema result = coloumSchemas.get(qualifier).get(family);
+        if (result == null) {
+            throw new MyHBaseException("no HBaseColumnSchema found with family=" + family + ", qualifier=" + qualifier );
+        }
+        return result;
+    }
+
+    /**
+     * @Author: Cai Shunda
      * @Description: 通过列名找到对应的列Schema，只有当且仅当通过指定列名找到一个Schema才能返回，否则会报错
      * @Date: 21:48 2017/11/12
      */

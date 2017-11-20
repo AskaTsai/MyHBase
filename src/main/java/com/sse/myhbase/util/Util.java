@@ -1,6 +1,11 @@
 package com.sse.myhbase.util;
 
+import com.sse.myhbase.client.PutRequest;
+import com.sse.myhbase.client.RowKey;
+import com.sse.myhbase.core.Nullable;
 import com.sse.myhbase.exception.MyHBaseException;
+
+import java.io.Closeable;
 
 /**
  * @Author: Cai Shunda
@@ -64,6 +69,47 @@ public class Util {
         if (values.length != length) {
             throw new MyHBaseException("checkLength error. values.length="
                     + values.length + " length=" + length);
+        }
+    }
+    /**
+     * @Author: Cai Shunda
+     * @Description: 检查PutRequest
+     * @Param:
+     * @Date: 21:19 2017/11/19
+     */
+    public static void checkPutRequest(PutRequest<?> putRequest) {
+        checkNull(putRequest);
+        checkNull(putRequest.getT());
+        checkRowKey(putRequest.getRowKey());
+    }
+
+    /**
+     * @Author: Cai Shunda
+     * @Description: 检查行键RowKey
+     * @Param:
+     * @Date: 21:19 2017/11/19
+     */
+    private static void checkRowKey(RowKey rowKey) {
+        checkNull(rowKey);
+        if (rowKey.toBytes() == null) {
+            throw new MyHBaseException("rowkey bytes is null, rowkey=" + rowKey);
+        }
+    }
+
+    /**
+     * @Author: Cai Shunda
+     * @Description: 关闭连接
+     * @Param:
+     * @Date: 22:15 2017/11/20
+     */
+    public static void close(@Nullable Closeable closeable) {
+        if (closeable == null) {
+            return;
+        }
+        try {
+            closeable.close();
+        } catch (Exception e) {
+            throw new MyHBaseException("close closeable exception." + e);
         }
     }
 }

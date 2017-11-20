@@ -1,6 +1,9 @@
 package com.sse.myhbase.config;
 
+import com.sse.myhbase.client.HBaseTable;
 import com.sse.myhbase.client.TypeInfo;
+import com.sse.myhbase.core.NotNullable;
+import com.sse.myhbase.core.Nullable;
 import com.sse.myhbase.exception.MyHBaseException;
 import com.sse.myhbase.hql.HBaseQuery;
 import com.sse.myhbase.util.CollectionUtil;
@@ -82,6 +85,47 @@ public class HBaseTableConfig {
             throw new MyHBaseException("parse config error.", e);
         }
 
+    }
+
+    /**
+     * @Author: Cai Shunda
+     * @Description:  从映射信息中获取对应POJO的类型信息
+     *          会通过三种方式来获取映射信息：
+     *          1. 通过配置的xml文件
+     *          2. 通过@HBaseTable注解发现映射关系，同时会记录下来
+     *          3. 通过反射来发现映射关系，同时会记录下来
+     * @Param:
+     * @Date: 21:36 2017/11/19
+     */
+    @Nullable
+    public TypeInfo findTypeInfo(@NotNullable Class<?> type) {
+        Util.checkNull(type);
+
+        //xml文件中
+        TypeInfo result = mappingTypes.get(type);
+        if (result != null) {
+            return result;
+        }
+
+        //@HBaseTable注解
+        HBaseTable annotation = type.getAnnotation(HBaseTable.class);
+        if (annotation != null) {
+            //把type对应的类解析出来，放到映射变量中
+            result = TypeInfo.parse(type);
+            //记录
+            addTypeInfo(result);
+            return result;
+        }
+
+        //用反射的方式去找是否有映射关系
+        result = TypeInfo.parseInAir(type, hBaseTableSchema);
+        if (result != null) {
+            //存在对应映射关系，记录下来
+            addTypeInfo(result);
+            return result;
+        }
+
+        throw new MyHBaseException("can not find type info for type = " + type);
     }
 
     private void addTypeInfo(TypeInfo typeInfo) {

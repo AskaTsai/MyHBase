@@ -1,5 +1,6 @@
 package com.sse.myhbase.client;
 
+import com.sse.myhbase.config.HBaseColumnSchema;
 import com.sse.myhbase.config.HBaseTableSchema;
 import com.sse.myhbase.exception.MyHBaseException;
 import com.sse.myhbase.util.ClassUtil;
@@ -9,6 +10,8 @@ import com.sse.myhbase.util.XmlUtil;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 
+import java.lang.reflect.Field;
+import java.lang.reflect.Modifier;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -68,6 +71,67 @@ public class TypeInfo {
             }
             typeInfo.columnInfos.add(columnInfo);
         }
+        typeInfo.init();
+        return typeInfo;
+    }
+
+    /**
+     * @Author: Cai Shunda
+     * @Description: 根据java对象的class类型直接解析出TypeInfo
+     * @Param:
+     * @Date: 16:53 2017/11/20
+     */
+    public static TypeInfo parse(Class<?> type) {
+        Util.checkNull(type);
+
+        TypeInfo typeInfo = new TypeInfo();
+        typeInfo.type = type;
+
+        Field[] fields = type.getDeclaredFields();
+        for (Field field : fields) {
+            field.setAccessible(true);
+            ColumnInfo columnInfo = ColumnInfo.parse(type, field);
+            if (columnInfo == null) {
+                continue;
+            }
+            typeInfo.columnInfos.add(columnInfo);
+        }
+        typeInfo.init();
+        return typeInfo;
+    }
+
+    /**
+     * @Author: Cai Shunda
+     * @Description: 根据java类型和XML中配置的HBase表信息，通过反射进行两者的映射。
+     * @Param:
+     * @Date: 18:09 2017/11/20
+     */
+    public static TypeInfo parseInAir(Class<?> type, HBaseTableSchema hBaseTableSchema) {
+        Util.checkNull(type);
+        Util.checkNull(hBaseTableSchema);
+
+        TypeInfo typeInfo = new TypeInfo();
+        typeInfo.type = type;
+        Field[] fields = type.getDeclaredFields();
+
+        for (Field field : fields) {
+            field.setAccessible(true);
+            //static属性不考虑，不做映射
+            if (Modifier.isStatic(field.getModifiers())) {
+                continue;
+            }
+
+            //使用属性名当作列名
+            String qualifier = field.getName();
+            HBaseColumnSchema hBaseColumnSchema = hBaseTableSchema.findColummSchema(qualifier);
+
+            ColumnInfo columnInfo = ColumnInfo.parseInAir(type, field, hBaseColumnSchema.getFamily());
+            if (columnInfo == null) {
+                continue;
+            }
+            typeInfo.columnInfos.add(columnInfo);
+        }
+
         typeInfo.init();
         return typeInfo;
     }
