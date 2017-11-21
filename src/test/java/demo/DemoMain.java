@@ -81,6 +81,7 @@ public class DemoMain {
         student.setGender(Gender.FEMALE);
         student.setName("蔡顺达");
         client.putObject(new StudentRowKey(110) ,student);
+
     }
 
 }
