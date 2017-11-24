@@ -8,11 +8,10 @@ import com.sse.myhbase.config.resource.CachedFileSystemResource;
 import org.apache.hadoop.hbase.HColumnDescriptor;
 import org.apache.hadoop.hbase.HTableDescriptor;
 import org.apache.hadoop.hbase.TableName;
-import org.apache.hadoop.hbase.client.HBaseAdmin;
+import org.apache.log4j.Logger;
 import org.junit.Test;
 import org.springframework.core.io.Resource;
 
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -25,7 +24,9 @@ import java.util.List;
  */
 public class DemoMain {
 
-    private MyHBaseClient getMyHBaseClient(){
+    final private static Logger logger = Logger.getLogger(DemoMain.class);
+
+    private MyHBaseClient getMyHBaseClient() {
         //HBaseDataSource
         HBaseDataSource hBaseDataSource = new HBaseDataSource();
         List<Resource> resourceList = new ArrayList<>();
@@ -36,7 +37,7 @@ public class DemoMain {
 
         //HBaseTableConfig
         HBaseTableConfig hBaseTableConfig = new HBaseTableConfig();
-        hBaseTableConfig.setConfigResource(new CachedFileSystemResource("/Users/AskaCai/Documents/Workspace/git/myhbase/src/config/hbasetable.xml"));
+        hBaseTableConfig.setConfigResource(new CachedFileSystemResource("/Users/AskaCai/Documents/Workspace/git/myhbase/src/config/hbasetable_teacher.xml"));
         hBaseTableConfig.init();
 
         //HBaseClient
@@ -46,6 +47,7 @@ public class DemoMain {
 
         return client;
     }
+
     @Test
     public void deleteTable() {
         MyHBaseClient client = getMyHBaseClient();
@@ -54,6 +56,7 @@ public class DemoMain {
         client.deleteTable("testtable");
         client.deleteTable("MyTestTableName");
     }
+
     @Test
     public void createTable() {
         MyHBaseClient client = getMyHBaseClient();
@@ -80,8 +83,40 @@ public class DemoMain {
         student.setDate(new Date());
         student.setGender(Gender.FEMALE);
         student.setName("蔡顺达");
-        client.putObject(new StudentRowKey(110) ,student);
+        client.putObject(new StudentRowKey(110), student);
 
+    }
+
+    @Test
+    public void putObjectWithAnnotation() {
+        MyHBaseClient client = getMyHBaseClient();
+        Teacher teacher = new Teacher();
+        teacher.setId(13111182);
+        teacher.setAge(40);
+        teacher.setDate(new Date());
+        teacher.setGender(Gender.MALE);
+        teacher.setName("蔡老苏");
+        client.putObject(new TeacherRowKey(100), teacher);
+
+    }
+
+    @Test
+    public void putObjectReflection() {
+        MyHBaseClient client = getMyHBaseClient();
+        President president = new President();
+        president.setId(10010);
+        president.setAge(60);
+        president.setDate(new Date());
+        president.setGender(Gender.FEMALE);
+        president.setName("蔡校长");
+        client.putObject(new PresidentRowKey(10086), president);
+    }
+
+    @Test
+    public void findObjectByRowKey(){
+        MyHBaseClient client = getMyHBaseClient();
+        Student student = client.findObject(new StudentRowKey(110), Student.class);
+        logger.info(student);
     }
 
 }

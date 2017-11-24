@@ -1,64 +1,50 @@
 package demo;
 
-import org.apache.commons.lang.builder.ToStringBuilder;
+import com.sse.myhbase.client.HBaseColumn;
+import com.sse.myhbase.client.HBaseTable;
 
 import java.util.Date;
 
 /**
  * @Author: Cai Shunda
  * @Description:
- * @Date: Created in 22:01 2017/11/15
+ * @Date: Created in 21:29 2017/11/21
  * @Modified by:
  */
-public class Student {
+@HBaseTable(defaultFamily = "MyDefaultFamily")
+public class Teacher {
+    @HBaseColumn(qualifier = "id", family = "MyRecordFamily")
     int id;
-    String name;
-    Date date;
-    Gender gender;
-    int age;
 
-    public int getId() {
-        return id;
-    }
+    @HBaseColumn(qualifier = "name")
+    String name;
+
+    @HBaseColumn(qualifier = "date")
+    Date date;
+
+    @HBaseColumn(qualifier = "gender")
+    Gender gender;
+
+    @HBaseColumn(qualifier = "age")
+    int age;
 
     public void setId(int id) {
         this.id = id;
-    }
-
-    public String getName() {
-        return name;
     }
 
     public void setName(String name) {
         this.name = name;
     }
 
-    public Date getDate() {
-        return date;
-    }
-
     public void setDate(Date date) {
         this.date = date;
-    }
-
-    public Gender getGender() {
-        return gender;
     }
 
     public void setGender(Gender gender) {
         this.gender = gender;
     }
 
-    public int getAge() {
-        return age;
-    }
-
     public void setAge(int age) {
         this.age = age;
-    }
-
-    @Override
-    public String toString() {
-        return ToStringBuilder.reflectionToString(this);
     }
 }

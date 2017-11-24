@@ -209,6 +209,10 @@ public class HBaseTableSchema {
 
     public boolean isAutoCreate() {return this.isAutoCreate;}
 
+    public RowKeyHandler getRowKeyHandler() {
+        return rowKeyHandler;
+    }
+
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
@@ -218,7 +222,7 @@ public class HBaseTableSchema {
         StringUtil.appendKeyValue(sb, null, "rowkeyHandlerName", rowKeyHandlerName);
         for (Map<String, HBaseColumnSchema> tmp :coloumSchemas.values()) {
             for (HBaseColumnSchema columnSchema : tmp.values()) {
-                StringUtil.appendKeyValue(sb, null, "columnSchema", columnSchema.toString());
+                StringUtil.appendKeyValue(sb, null, "findColumnSchema", columnSchema.toString());
             }
         }
         sb.append("==================HBaseTableConfig==================");

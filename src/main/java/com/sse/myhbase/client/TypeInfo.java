@@ -167,6 +167,30 @@ public class TypeInfo {
         return versionedColumnInfo != null;
     }
 
+
+    public Class<?> getType() {
+        return type;
+    }
+
+    public List<ColumnInfo> getColumnInfos() {
+        return columnInfos;
+    }
+
+    public ColumnInfo getVersionedColumnInfo() {
+        return versionedColumnInfo;
+    }
+
+    /**
+     * @Author: Cai Shunda
+     * @Description: 根据family和qualifier查找JOPO的field和HBase列的对应关系
+     * @Param:
+     * @Date: 21:36 2017/11/24
+     */
+    public ColumnInfo findColumnInfo(String family, String qualifier) {
+        Util.checkEmptyString(family);
+        Util.checkEmptyString(qualifier);
+        return columnInfoMap.get(qualifier).get(family);
+    }
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
@@ -179,17 +203,5 @@ public class TypeInfo {
         sb.append("=============" + this.getClass() + "==============");
 
         return sb.toString();
-    }
-
-    public Class<?> getType() {
-        return type;
-    }
-
-    public List<ColumnInfo> getColumnInfos() {
-        return columnInfos;
-    }
-
-    public ColumnInfo getVersionedColumnInfo() {
-        return versionedColumnInfo;
     }
 }

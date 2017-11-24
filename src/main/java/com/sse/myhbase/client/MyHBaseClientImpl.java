@@ -2,14 +2,17 @@ package com.sse.myhbase.client;
 
 import com.sse.myhbase.config.HBaseTableConfig;
 import com.sse.myhbase.config.HBaseTableSchema;
+import com.sse.myhbase.core.Nullable;
 import com.sse.myhbase.exception.MyHBaseException;
 import com.sse.myhbase.util.Util;
 import org.apache.hadoop.hbase.HColumnDescriptor;
 import org.apache.hadoop.hbase.HTableDescriptor;
 import org.apache.hadoop.hbase.TableName;
+import org.apache.hadoop.hbase.client.Get;
 import org.apache.hadoop.hbase.client.HBaseAdmin;
 import org.apache.hadoop.hbase.client.HTable;
 import org.apache.hadoop.hbase.client.Put;
+import org.apache.hadoop.hbase.filter.Filter;
 import org.apache.log4j.Logger;
 
 import java.io.IOException;
@@ -103,6 +106,59 @@ public class MyHBaseClientImpl extends MyHBaseClientBase{
         cleanTimestampForPutRequest(putRequests);
         putObjectList_internal(putRequests);
     }
+
+    @Override
+    public <T> T findObject(RowKey rowKey, Class<? extends T> type) {
+        return unwrap(findObjectAndKey(rowKey, type));
+    }
+
+    private <T> T unwrap(MyHBaseDOWithKeyResult<T> myHBaseDOWithKeyResult) {
+        if (myHBaseDOWithKeyResult == null) {
+            return null;
+        }
+        return myHBaseDOWithKeyResult.getT();
+    }
+
+    @Override
+    public <T> MyHBaseDOWithKeyResult<T> findObjectAndKey(RowKey rowKey, Class<? extends T> type) {
+        return findObjectAndKey(rowKey, type, null);
+    }
+
+    @Override
+    public <T> MyHBaseDOWithKeyResult<T> findObjectAndKey(RowKey rowKey, Class<? extends T> type, QueryExtInfo queryExtInfo) {
+        return findObjectAndKey_internal(rowKey, type, null, queryExtInfo);
+    }
+
+    private <T> MyHBaseDOWithKeyResult<T> findObjectAndKey_internal(RowKey rowKey, Class<? extends T> type, @Nullable Filter filter , @Nullable QueryExtInfo queryExtInfo) {
+        Util.checkRowKey(rowKey);
+        Util.checkNull(type);
+
+        //获取连接
+        HTable hTable = getHTable();
+        try {
+            Get get = constructGet(rowKey, filter);
+
+            if (queryExtInfo != null) {
+                //只查询1个版本
+                queryExtInfo.setMaxVerions(1);
+                if (queryExtInfo.isMaxVersionSet()) {
+                    get.setMaxVersions(queryExtInfo.getMaxVerions());
+                }
+                if (queryExtInfo.isTimeRangeSet()) {
+                    get.setTimeRange(queryExtInfo.getMinStamp(), queryExtInfo.getMaxStamp());
+                }
+            }
+
+            applyRequestFamilyAndQualifier(type, get);
+
+            return convertToMyHBaseDOWithKeyResult(hTable.get(get), type);
+        } catch (Exception e) {
+            throw new MyHBaseException("findObjectAndKey_internal. rowKey=" + rowKey + " type=" + type, e);
+        } finally {
+            Util.close(hTable);
+        }
+    }
+
 
     private <T> void putObjectList_internal(List<PutRequest<T>> putRequests) {
         Util.checkNull(putRequests);

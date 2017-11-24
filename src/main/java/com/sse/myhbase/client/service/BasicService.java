@@ -1,6 +1,8 @@
 package com.sse.myhbase.client.service;
 
+import com.sse.myhbase.client.MyHBaseDOWithKeyResult;
 import com.sse.myhbase.client.PutRequest;
+import com.sse.myhbase.client.QueryExtInfo;
 import com.sse.myhbase.client.RowKey;
 
 import java.util.List;
@@ -28,4 +30,30 @@ public interface BasicService {
      * @Date: 20:45 2017/11/19
      */
     public <T> void putObjectList(List<PutRequest<T>> putRequestList);
+
+    /**
+     * @Author: Cai Shunda
+     * @Description: 根据行键rowkey获取对象
+     * @Param:
+     * @Date: 22:57 2017/11/21
+     */
+    public <T> T findObject(RowKey rowKey, Class<? extends T> type);
+
+    /**
+     * @Author: Cai Shunda
+     * @Description: 通过RowKey找到对象和RowKey行键
+     * @Param:
+     * @Date: 21:08 2017/11/23
+     */
+    public <T> MyHBaseDOWithKeyResult<T> findObjectAndKey(RowKey rowKey, Class<? extends T> type);
+
+    /**
+     * @Author: Cai Shunda
+     * @Description: 通过RowKey找到对象和RowKey行键
+     * @Param:
+     * @Date: 21:47 2017/11/23
+     */
+    public <T> MyHBaseDOWithKeyResult<T> findObjectAndKey(RowKey rowKey, Class<? extends T> type, QueryExtInfo queryExtInfo);
+
+
 }

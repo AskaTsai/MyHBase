@@ -89,7 +89,7 @@ public class Util {
      * @Param:
      * @Date: 21:19 2017/11/19
      */
-    private static void checkRowKey(RowKey rowKey) {
+    public static void checkRowKey(RowKey rowKey) {
         checkNull(rowKey);
         if (rowKey.toBytes() == null) {
             throw new MyHBaseException("rowkey bytes is null, rowkey=" + rowKey);

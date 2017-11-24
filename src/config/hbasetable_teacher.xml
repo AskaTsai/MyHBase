@@ -1,0 +1,9 @@
+<MyHBase>
+    <HBaseTableSchema tableName="MyTestTableName" defaultFamily="MyDefaultFamily" isAutoCreate="true">
+        <HBaseColumnSchema qualifier="id" typeName="int" family="MyRecordFamily"/>
+        <HBaseColumnSchema qualifier="name" typeName="string"/>
+        <HBaseColumnSchema qualifier="date" typeName="date"/>
+        <HBaseColumnSchema qualifier="gender" typeName="demo.Gender"/>
+        <HBaseColumnSchema qualifier="age" typeName="int"/>
+    </HBaseTableSchema>
+</MyHBase>
