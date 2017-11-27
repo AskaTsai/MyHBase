@@ -119,4 +119,11 @@ public class DemoMain {
         logger.info(student);
     }
 
+    @Test
+    public void findObejectListByRange() {
+        MyHBaseClient client = getMyHBaseClient();
+        List<Student> students = client.findObjectList(new StudentRowKey(100), new StudentRowKey(10087), Student.class);
+        logger.info(students);
+    }
+
 }

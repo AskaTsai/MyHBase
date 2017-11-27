@@ -55,5 +55,29 @@ public interface BasicService {
      */
     public <T> MyHBaseDOWithKeyResult<T> findObjectAndKey(RowKey rowKey, Class<? extends T> type, QueryExtInfo queryExtInfo);
 
+    /**
+     * @Author: Cai Shunda
+     * @Description: 找到在【startRowKey, endRowKey）之间的所有type类型的java对象
+     * @Param:
+     * @Date: 20:30 2017/11/27
+     */
+    public <T> List<T> findObjectList(RowKey startRowKey, RowKey endRowKey, Class<? extends T> type);
+
+    /**
+     * @Author: Cai Shunda
+     * @Description: 找到在【startRowKey, endRowKey）之间的所有type类型的java对象
+     * @Param:
+     * @Date: 20:40 2017/11/27
+     */
+    public <T> List<MyHBaseDOWithKeyResult<T>> findObjectAndKeyList(RowKey startRowKey, RowKey endRowKey, Class<? extends T> type);
+
+    /**
+     * @Author: Cai Shunda
+     * @Description: 找到在【startRowKey, endRowKey）之间的所有type类型的java对象
+     * @Param:
+     * @Date: 20:40 2017/11/27
+     */
+    public <T> List<MyHBaseDOWithKeyResult<T>> findObjectAndKeyList(RowKey startRowKey, RowKey endRowKey,
+                                                                    Class<? extends T> type, QueryExtInfo queryExtInfo);
 
 }

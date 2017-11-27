@@ -10,10 +10,7 @@ import com.sse.myhbase.type.TypeHandler;
 import com.sse.myhbase.util.Util;
 import org.apache.hadoop.hbase.Cell;
 import org.apache.hadoop.hbase.CellUtil;
-import org.apache.hadoop.hbase.client.Get;
-import org.apache.hadoop.hbase.client.HBaseAdmin;
-import org.apache.hadoop.hbase.client.HTable;
-import org.apache.hadoop.hbase.client.Result;
+import org.apache.hadoop.hbase.client.*;
 import org.apache.hadoop.hbase.filter.Filter;
 
 import java.util.List;
@@ -126,6 +123,42 @@ abstract public class MyHBaseClientBase implements MyHBaseClient{
         List<ColumnInfo> columnInfoList = typeInfo.getColumnInfos();
         for (ColumnInfo columnInfo : columnInfoList) {
             get.addColumn(columnInfo.familyBytes, columnInfo.qualifierBytes);
+        }
+    }
+
+    /**
+     * @Author: Cai Shunda
+     * @Description: 构建HBase查询请求的Scan
+     * @Param:
+     * @Date: 21:22 2017/11/27
+     */
+    protected Scan constructScan(RowKey startKey, RowKey endKey, @Nullable Filter filter, @Nullable QueryExtInfo queryExtInfo) {
+        Util.checkRowKey(startKey);
+        Util.checkRowKey(endKey);
+
+        Scan scan = new Scan();
+        scan.setStartRow(startKey.toBytes());
+        scan.setStopRow(endKey.toBytes());
+
+
+//        int cachingSize = getScanCaching();
+//        if (myHBaseRuntimeSetting.isIn)
+
+        scan.setFilter(filter);
+        return scan;
+    }
+
+    /**
+     * @Author: Cai Shunda
+     * @Description: 为scan根据type指定family和qualifier
+     * @Param:
+     * @Date: 21:41 2017/11/27
+     */
+    protected <T> void applyRequestFamilyAndQualifier(Class<? extends T> type, Scan scan) {
+        TypeInfo typeInfo = findTypeInfo(type);
+        List<ColumnInfo> columnInfoList = typeInfo.getColumnInfos();
+        for (ColumnInfo columnInfo : columnInfoList) {
+            scan.addColumn(columnInfo.familyBytes, columnInfo.qualifierBytes);
         }
     }
 

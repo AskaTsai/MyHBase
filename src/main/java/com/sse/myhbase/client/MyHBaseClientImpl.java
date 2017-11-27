@@ -8,10 +8,7 @@ import com.sse.myhbase.util.Util;
 import org.apache.hadoop.hbase.HColumnDescriptor;
 import org.apache.hadoop.hbase.HTableDescriptor;
 import org.apache.hadoop.hbase.TableName;
-import org.apache.hadoop.hbase.client.Get;
-import org.apache.hadoop.hbase.client.HBaseAdmin;
-import org.apache.hadoop.hbase.client.HTable;
-import org.apache.hadoop.hbase.client.Put;
+import org.apache.hadoop.hbase.client.*;
 import org.apache.hadoop.hbase.filter.Filter;
 import org.apache.log4j.Logger;
 
@@ -198,6 +195,100 @@ public class MyHBaseClientImpl extends MyHBaseClientBase{
         }
     }
 
+    @Override
+    public <T> List<T> findObjectList(RowKey startRowKey, RowKey endRowKey, Class<? extends T> type) {
+        return unwrap(findObjectAndKeyList(startRowKey, endRowKey, type));
+    }
+
+    private <T> List<T> unwrap(List<MyHBaseDOWithKeyResult<T>> myHBaseDOWithKeyResultList) {
+        List<T> resultList = new ArrayList<>();
+        if (!myHBaseDOWithKeyResultList.isEmpty()) {
+            for (MyHBaseDOWithKeyResult<T> t : myHBaseDOWithKeyResultList) {
+                resultList.add(unwrap(t));
+            }
+        }
+        return resultList;
+    }
+
+    @Override
+    public <T> List<MyHBaseDOWithKeyResult<T>> findObjectAndKeyList(RowKey startRowKey, RowKey endRowKey, Class<? extends T> type) {
+        return findObjectAndKeyList(startRowKey, endRowKey, type, null);
+    }
+
+    @Override
+    public <T> List<MyHBaseDOWithKeyResult<T>> findObjectAndKeyList(RowKey startRowKey, RowKey endRowKey, Class<? extends T> type, QueryExtInfo queryExtInfo) {
+        return findObjectAndKeyList_internal(startRowKey, endRowKey, type, null, queryExtInfo);
+    }
+
+    private <T> List<MyHBaseDOWithKeyResult<T>> findObjectAndKeyList_internal(
+            RowKey startRowKey, RowKey endRowKey, Class<? extends T> type,
+            Filter filter, QueryExtInfo queryExtInfo) {
+        Util.checkNull(startRowKey);
+        Util.checkNull(endRowKey);
+        Util.checkNull(type);
+
+        Scan scan = constructScan(startRowKey, endRowKey, filter, queryExtInfo);
+
+        long startIndex = 0L;
+        long length = Long.MAX_VALUE;
+
+        if (queryExtInfo != null) {
+            //只查询一个版本
+            queryExtInfo.setMaxVerions(1);
+
+            if (queryExtInfo.isMaxVersionSet()) {
+                scan.setMaxVersions(queryExtInfo.getMaxVerions());
+            }
+            if (queryExtInfo.isTimeRangeSet()) {
+                try {
+                    scan.setTimeRange(queryExtInfo.getMinStamp(), queryExtInfo.getMaxStamp());
+                } catch (Exception e) {
+                    throw new MyHBaseException("findObjectAndKeyList_internal something wrong.", e);
+                }
+            }
+            if (queryExtInfo.isLimitSet()) {
+                startIndex = queryExtInfo.getStartIndex();
+                length = queryExtInfo.getLength();
+            }
+        }
+
+        applyRequestFamilyAndQualifier(type, scan);
+        HTable hTable = getHTable();
+        ResultScanner scanner = null;
+
+        List<MyHBaseDOWithKeyResult<T>> resultList = new ArrayList<>();
+
+
+        try {
+            scanner = hTable.getScanner(scan);
+            long ignoreCounter = startIndex;
+            long resultCounter = 0L;
+            Result result = null;
+            while ((result = scanner.next()) != null) {
+                //这个待优化
+                if (ignoreCounter-- > 0) {
+                    continue;
+                }
+                MyHBaseDOWithKeyResult<T> t = convertToMyHBaseDOWithKeyResult(result, type);
+                if (t != null) {
+                    resultList.add(t);
+                    if (++ resultCounter >= length) {
+                        break;
+                    }
+                }
+            }
+
+        } catch (Exception e) {
+            throw new MyHBaseException("findObjectAndKeyList_internal. startRowKey=" + startRowKey
+                    + " endRowKey=" + endRowKey + " type=" + type, e);
+        } finally {
+            Util.close(scanner);
+            Util.close(hTable);
+        }
+
+        return resultList;
+
+    }
 
     /**
      * @Author: Cai Shunda
