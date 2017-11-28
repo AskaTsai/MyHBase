@@ -5,10 +5,10 @@ import org.apache.commons.lang.builder.HashCodeBuilder;
 import org.apache.commons.lang.builder.ToStringBuilder;
 
 /**
- * @Author: Cai Shunda
- * @Description: 将查询获取的cell转化成DO
- * @Date: Created in 21:15 2017/11/23
- * @Modified by:
+ * @author: Cai Shunda
+ * @description: 将查询获取的cell转化成DO
+ * @date: Created in 21:15 2017/11/23
+ * @modified by:
  */
 public class MyHBaseDOWithKeyResult<T> {
 

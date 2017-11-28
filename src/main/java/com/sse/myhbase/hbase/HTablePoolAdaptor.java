@@ -11,10 +11,10 @@ import java.io.IOException;
 
 
 /**
- * @Author: Cai Shunda
- * @Description: hbase表连接池的默认实现
- * @Date: Created in 15:16 2017/11/7
- * @Modified by:
+ * @author: Cai Shunda
+ * @description: hbase表连接池的默认实现
+ * @date: Created in 15:16 2017/11/7
+ * @modified by:
  */
 public class HTablePoolAdaptor implements HTablePoolService {
 

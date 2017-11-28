@@ -6,10 +6,10 @@ import com.sse.myhbase.client.HBaseTable;
 import java.util.Date;
 
 /**
- * @Author: Cai Shunda
- * @Description:
- * @Date: Created in 21:29 2017/11/21
- * @Modified by:
+ * @author: Cai Shunda
+ * @description:
+ * @date: Created in 21:29 2017/11/21
+ * @modified by:
  */
 @HBaseTable(defaultFamily = "MyDefaultFamily")
 public class Teacher {

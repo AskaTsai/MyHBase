@@ -9,11 +9,11 @@ import org.apache.commons.lang.builder.ToStringBuilder;
 import java.util.Date;
 
 /**
- * @Author: Cai Shunda
- * @Description: 执行HBase查询中需要的一些额外信息
+ * @author: Cai Shunda
+ * @description: 执行HBase查询中需要的一些额外信息
  *              目前有，最大版本，时间标签的范围（最小和最大），查询的Rowkey范围
- * @Date: Created in 21:49 2017/11/23
- * @Modified by:
+ * @date: Created in 21:49 2017/11/23
+ * @modified by:
  */
 public class QueryExtInfo {
     private boolean isMaxVersionSet;

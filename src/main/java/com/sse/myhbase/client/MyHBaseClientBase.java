@@ -4,6 +4,7 @@ import com.sse.myhbase.client.rowkey.handler.RowKeyHandler;
 import com.sse.myhbase.config.HBaseColumnSchema;
 import com.sse.myhbase.config.HBaseDataSource;
 import com.sse.myhbase.config.HBaseTableConfig;
+import com.sse.myhbase.config.MyHBaseRuntimeSetting;
 import com.sse.myhbase.core.Nullable;
 import com.sse.myhbase.exception.MyHBaseException;
 import com.sse.myhbase.type.TypeHandler;
@@ -16,10 +17,10 @@ import org.apache.hadoop.hbase.filter.Filter;
 import java.util.List;
 
 /**
- * @Author: Cai Shunda
- * @Description: MyHBaseClient接口的骨架skeleton实现
- * @Date: Created in 21:51 2017/11/1
- * @Modified by:
+ * @author: Cai Shunda
+ * @description: MyHBaseClient接口的骨架skeleton实现
+ * @date: Created in 21:51 2017/11/1
+ * @modified by:
  */
 abstract public class MyHBaseClientBase implements MyHBaseClient{
     /**
@@ -30,32 +31,36 @@ abstract public class MyHBaseClientBase implements MyHBaseClient{
      * hbase表配置（逻辑表结构）
      * */
     protected HBaseTableConfig hBaseTableConfig;
+    /**
+     * hbase的运行时配置
+     */
+    protected MyHBaseRuntimeSetting myHBaseRuntimeSetting = new MyHBaseRuntimeSetting();
 
     /**
-     * @Author: Cai Shunda
-     * @Description: 获取表连接
+     * @author: Cai Shunda
+     * @description: 获取表连接
      * @Param:
-     * @Date: 22:07 2017/11/20
+     * @date: 22:07 2017/11/20
      */
     protected HTable getHTable() {
         return hBaseDataSource.getHTable(hBaseTableConfig.gethBaseTableSchema().getTableName());
     }
 
     /**
-     * @Author: Cai Shunda
-     * @Description: 获取配置里面的TypeInfo
+     * @author: Cai Shunda
+     * @description: 获取配置里面的TypeInfo
      * @Param:
-     * @Date: 21:30 2017/11/19
+     * @date: 21:30 2017/11/19
      */
     protected TypeInfo findTypeInfo(Class<?> type) {
         return hBaseTableConfig.findTypeInfo(type);
     }
 
     /**
-     * @Author: Cai Shunda
-     * @Description: 把java实例t对应columnInfo的属性转化成bytes
+     * @author: Cai Shunda
+     * @description: 把java实例t对应columnInfo的属性转化成bytes
      * @Param:
-     * @Date: 21:04 2017/11/20
+     * @date: 21:04 2017/11/20
      */
     protected <T> byte[] convertPOJOFieldToBytes(T t, ColumnInfo columnInfo) {
         try {
@@ -67,10 +72,10 @@ abstract public class MyHBaseClientBase implements MyHBaseClient{
     }
 
     /**
-     * @Author: Cai Shunda
-     * @Description: 把value安装对应类型转化成bytes
+     * @author: Cai Shunda
+     * @description: 把value安装对应类型转化成bytes
      * @Param:
-     * @Date: 21:07 2017/11/20
+     * @date: 21:07 2017/11/20
      */
     protected byte[] convertValueToBytes(Object value, ColumnInfo columnInfo) {
         HBaseColumnSchema hBaseColumnSchema = findColumnSchema(columnInfo.family, columnInfo.qualifier);
@@ -78,10 +83,10 @@ abstract public class MyHBaseClientBase implements MyHBaseClient{
     }
 
     /**
-     * @Author: Cai Shunda
-     * @Description: 把value安装对应类型转化成bytes
+     * @author: Cai Shunda
+     * @description: 把value安装对应类型转化成bytes
      * @Param:
-     * @Date: 21:10 2017/11/20
+     * @date: 21:10 2017/11/20
      */
     protected byte[] convertValueToBytes(Object value, HBaseColumnSchema hBaseColumnSchema) {
         TypeHandler typeHandler = hBaseColumnSchema.getTypeHandler();
@@ -89,20 +94,20 @@ abstract public class MyHBaseClientBase implements MyHBaseClient{
     }
 
     /**
-     * @Author: Cai Shunda
-     * @Description: 获取配置中对应Family和qualifier的HBase列配置
+     * @author: Cai Shunda
+     * @description: 获取配置中对应Family和qualifier的HBase列配置
      * @Param:
-     * @Date: 20:25 2017/11/24
+     * @date: 20:25 2017/11/24
      */
     protected HBaseColumnSchema findColumnSchema(String family, String qualifier) {
         return hBaseTableConfig.gethBaseTableSchema().findColumnSchema(family, qualifier);
     }
 
     /**
-     * @Author: Cai Shunda
-     * @Description: 构建HBase查询请求的Get
+     * @author: Cai Shunda
+     * @description: 构建HBase查询请求的Get
      * @Param:
-     * @Date: 20:25 2017/11/24
+     * @date: 20:25 2017/11/24
      */
     protected Get constructGet(RowKey rowKey, @Nullable Filter filter) {
         Util.checkRowKey(rowKey);
@@ -113,10 +118,10 @@ abstract public class MyHBaseClientBase implements MyHBaseClient{
     }
 
     /**
-     * @Author: Cai Shunda
-     * @Description: 为get根据type指定family和qualifier
+     * @author: Cai Shunda
+     * @description: 为get根据type指定family和qualifier
      * @Param:
-     * @Date: 20:39 2017/11/24
+     * @date: 20:39 2017/11/24
      */
     protected <T> void applyRequestFamilyAndQualifier(Class<? extends T> type, Get get) {
         TypeInfo typeInfo = findTypeInfo(type);
@@ -127,10 +132,10 @@ abstract public class MyHBaseClientBase implements MyHBaseClient{
     }
 
     /**
-     * @Author: Cai Shunda
-     * @Description: 构建HBase查询请求的Scan
+     * @author: Cai Shunda
+     * @description: 构建HBase查询请求的Scan
      * @Param:
-     * @Date: 21:22 2017/11/27
+     * @date: 21:22 2017/11/27
      */
     protected Scan constructScan(RowKey startKey, RowKey endKey, @Nullable Filter filter, @Nullable QueryExtInfo queryExtInfo) {
         Util.checkRowKey(startKey);
@@ -141,18 +146,28 @@ abstract public class MyHBaseClientBase implements MyHBaseClient{
         scan.setStopRow(endKey.toBytes());
 
 
-//        int cachingSize = getScanCaching();
-//        if (myHBaseRuntimeSetting.isIn)
+        int cachingSize = myHBaseRuntimeSetting.getScanCachingSize();
+        if (myHBaseRuntimeSetting.isIntelligentSacnSize()) {
+            //待完善，这样最大每次只能扫描到MAX_VALUE,讲道理int的最大值2的31次方，21亿足够了
+            if (queryExtInfo != null && queryExtInfo.isLimitSet()) {
+                long limitScanSize = queryExtInfo.getStartIndex() + queryExtInfo.getLength();
+                if (limitScanSize > Integer.MAX_VALUE) {
+                    cachingSize = Integer.MAX_VALUE;
+                } else {
+                    cachingSize = (int) limitScanSize;
+                }
+            }
+        }
 
         scan.setFilter(filter);
         return scan;
     }
 
     /**
-     * @Author: Cai Shunda
-     * @Description: 为scan根据type指定family和qualifier
+     * @author: Cai Shunda
+     * @description: 为scan根据type指定family和qualifier
      * @Param:
-     * @Date: 21:41 2017/11/27
+     * @date: 21:41 2017/11/27
      */
     protected <T> void applyRequestFamilyAndQualifier(Class<? extends T> type, Scan scan) {
         TypeInfo typeInfo = findTypeInfo(type);
@@ -163,10 +178,10 @@ abstract public class MyHBaseClientBase implements MyHBaseClient{
     }
 
     /**
-     * @Author: Cai Shunda
-     * @Description: 把HBase查询结果依据需要的POJO类型type转化为对应类型
+     * @author: Cai Shunda
+     * @description: 把HBase查询结果依据需要的POJO类型type转化为对应类型
      * @Param:
-     * @Date: 20:45 2017/11/24
+     * @date: 20:45 2017/11/24
      */
     protected <T> MyHBaseDOWithKeyResult<T> convertToMyHBaseDOWithKeyResult(Result hbaseResult, Class<? extends T> type) {
         Cell[] cells = hbaseResult.rawCells();

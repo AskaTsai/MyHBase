@@ -18,10 +18,10 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * @Author: Cai Shunda
- * @Description: POJO类型和HBase表映射信息
- * @Date: Created in 19:17 2017/11/11
- * @Modified by:
+ * @author: Cai Shunda
+ * @description: POJO类型和HBase表映射信息
+ * @date: Created in 19:17 2017/11/11
+ * @modified by:
  */
 public class TypeInfo {
     /**
@@ -42,9 +42,9 @@ public class TypeInfo {
     private Map<String, Map<String, ColumnInfo>> columnInfoMap = new HashMap<String, Map<String, ColumnInfo>>();
 
     /**
-     * @Author: Cai Shunda
-     * @Description: 从XML中的Node中解析出类型信息
-     * @Date: 17:32 2017/11/12
+     * @author: Cai Shunda
+     * @description: 从XML中的Node中解析出类型信息
+     * @date: 17:32 2017/11/12
      */
     public static TypeInfo parseNode(Node node, HBaseTableSchema hBaseTableSchema) {
         Util.checkNull(node);
@@ -76,10 +76,10 @@ public class TypeInfo {
     }
 
     /**
-     * @Author: Cai Shunda
-     * @Description: 根据java对象的class类型直接解析出TypeInfo
+     * @author: Cai Shunda
+     * @description: 根据java对象的class类型直接解析出TypeInfo
      * @Param:
-     * @Date: 16:53 2017/11/20
+     * @date: 16:53 2017/11/20
      */
     public static TypeInfo parse(Class<?> type) {
         Util.checkNull(type);
@@ -101,10 +101,10 @@ public class TypeInfo {
     }
 
     /**
-     * @Author: Cai Shunda
-     * @Description: 根据java类型和XML中配置的HBase表信息，通过反射进行两者的映射。
+     * @author: Cai Shunda
+     * @description: 根据java类型和XML中配置的HBase表信息，通过反射进行两者的映射。
      * @Param:
-     * @Date: 18:09 2017/11/20
+     * @date: 18:09 2017/11/20
      */
     public static TypeInfo parseInAir(Class<?> type, HBaseTableSchema hBaseTableSchema) {
         Util.checkNull(type);
@@ -137,9 +137,9 @@ public class TypeInfo {
     }
 
     /**
-     * @Author: Cai Shunda
-     * @Description: 初始化对象
-     * @Date: 20:32 2017/11/12
+     * @author: Cai Shunda
+     * @description: 初始化对象
+     * @date: 20:32 2017/11/12
      */
     public void init(){
        Util.checkNull(type);
@@ -181,10 +181,10 @@ public class TypeInfo {
     }
 
     /**
-     * @Author: Cai Shunda
-     * @Description: 根据family和qualifier查找JOPO的field和HBase列的对应关系
+     * @author: Cai Shunda
+     * @description: 根据family和qualifier查找JOPO的field和HBase列的对应关系
      * @Param:
-     * @Date: 21:36 2017/11/24
+     * @date: 21:36 2017/11/24
      */
     public ColumnInfo findColumnInfo(String family, String qualifier) {
         Util.checkEmptyString(family);

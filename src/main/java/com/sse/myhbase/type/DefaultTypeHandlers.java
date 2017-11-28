@@ -9,10 +9,10 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * @Author: Cai Shunda
- * @Description:
- * @Date: Created in 21:12 2017/11/9
- * @Modified by:
+ * @author: Cai Shunda
+ * @description:
+ * @date: Created in 21:12 2017/11/9
+ * @modified by:
  */
 public class DefaultTypeHandlers {
     private static EnumHandler enumHandler = new EnumHandler();

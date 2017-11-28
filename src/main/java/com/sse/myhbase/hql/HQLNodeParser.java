@@ -3,16 +3,16 @@ package com.sse.myhbase.hql;
 import org.w3c.dom.Node;
 
 /**
- * @Author: Cai Shunda
- * @Description: HQL的解析器
- * @Date: Created in 22:13 2017/11/11
- * @Modified by:
+ * @author: Cai Shunda
+ * @description: HQL的解析器
+ * @date: Created in 22:13 2017/11/11
+ * @modified by:
  */
 public class HQLNodeParser {
     /**
-     * @Author: Cai Shunda
-     * @Description: 未完待续
-     * @Date: 19:35 2017/11/13
+     * @author: Cai Shunda
+     * @description: 未完待续
+     * @date: 19:35 2017/11/13
      */
     public static HQLNode parse(Node node){
         return null;

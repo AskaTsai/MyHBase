@@ -5,10 +5,10 @@ import org.apache.hadoop.hbase.client.Connection;
 import org.apache.hadoop.hbase.client.HTable;
 
 /**
- * @Author: Cai Shunda
- * @Description:
- * @Date: Created in 15:17 2017/11/7
- * @Modified by:
+ * @author: Cai Shunda
+ * @description:
+ * @date: Created in 15:17 2017/11/7
+ * @modified by:
  */
 public class MyHBaseHTablePool implements HTablePoolService{
 

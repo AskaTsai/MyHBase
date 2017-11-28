@@ -11,10 +11,10 @@ import org.apache.hadoop.hbase.util.Bytes;
 import org.apache.log4j.Logger;
 
 /**
- * @Author: Cai Shunda
- * @Description: HBase表列的schema，包含列的所有元数据
- * @Date: Created in 20:40 2017/11/7
- * @Modified by:
+ * @author: Cai Shunda
+ * @description: HBase表列的schema，包含列的所有元数据
+ * @date: Created in 20:40 2017/11/7
+ * @modified by:
  */
 public class HBaseColumnSchema {
     /**

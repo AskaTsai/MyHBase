@@ -12,10 +12,10 @@ import org.w3c.dom.Node;
 import java.lang.reflect.Field;
 
 /**
- * @Author: Cai Shunda
- * @Description: POJO的属性和HBase表的列的对应关系
- * @Date: Created in 20:26 2017/11/12
- * @Modified by:
+ * @author: Cai Shunda
+ * @description: POJO的属性和HBase表的列的对应关系
+ * @date: Created in 20:26 2017/11/12
+ * @modified by:
  */
 public class ColumnInfo {
     /** POJO's class type. */
@@ -34,9 +34,9 @@ public class ColumnInfo {
     boolean  isVersioned;
 
     /**
-     * @Author: Cai Shunda
-     * @Description: 从field节点中解析出列信息(xml方式)
-     * @Date: 21:36 2017/11/12
+     * @author: Cai Shunda
+     * @description: 从field节点中解析出列信息(xml方式)
+     * @date: 21:36 2017/11/12
      */
     public static ColumnInfo parseNode(Class<?> type, Node fieldNode,
                                        HBaseTableSchema hBaseTableSchema, String defaultFamily) {
@@ -92,10 +92,10 @@ public class ColumnInfo {
     }
 
     /**
-     * @Author: Cai Shunda
-     * @Description: 从java类型定义里面指定属性field中解析出HBase列信息（注解方式）
+     * @author: Cai Shunda
+     * @description: 从java类型定义里面指定属性field中解析出HBase列信息（注解方式）
      * @Param:
-     * @Date: 17:55 2017/11/20
+     * @date: 17:55 2017/11/20
      */
     public static ColumnInfo parse(Class<?> type, Field field) {
         //defaultFamily
@@ -141,10 +141,10 @@ public class ColumnInfo {
 
 
     /**
-     * @Author: Cai Shunda
-     * @Description: 直接创建一个ColumnInfo，前提是能的HBase表的配置中找到对应的配置，这个逻辑应该在调用此方法前就确认
+     * @author: Cai Shunda
+     * @description: 直接创建一个ColumnInfo，前提是能的HBase表的配置中找到对应的配置，这个逻辑应该在调用此方法前就确认
      * @Param:
-     * @Date: 19:58 2017/11/20
+     * @date: 19:58 2017/11/20
      */
     public static ColumnInfo parseInAir(Class<?> type, Field field, String family) {
         Util.checkEmptyString(family);

@@ -5,10 +5,10 @@ import org.apache.commons.lang.builder.ToStringBuilder;
 import java.util.Date;
 
 /**
- * @Author: Cai Shunda
- * @Description:
- * @Date: Created in 22:01 2017/11/15
- * @Modified by:
+ * @author: Cai Shunda
+ * @description:
+ * @date: Created in 22:01 2017/11/15
+ * @modified by:
  */
 public class Student {
     int id;

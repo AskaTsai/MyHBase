@@ -3,10 +3,10 @@ package demo;
 import java.util.Date;
 
 /**
- * @Author: Cai Shunda
- * @Description:
- * @Date: Created in 22:29 2017/11/21
- * @Modified by:
+ * @author: Cai Shunda
+ * @description:
+ * @date: Created in 22:29 2017/11/21
+ * @modified by:
  */
 public class President {
     int id;

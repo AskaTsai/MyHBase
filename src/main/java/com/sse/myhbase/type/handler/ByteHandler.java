@@ -4,10 +4,10 @@ import com.sse.myhbase.type.AbstractTypeHandler;
 import com.sse.myhbase.util.Util;
 
 /**
- * @Author: Cai Shunda
- * @Description:
- * @Date: Created in 20:36 2017/11/10
- * @Modified by:
+ * @author: Cai Shunda
+ * @description:
+ * @date: Created in 20:36 2017/11/10
+ * @modified by:
  */
 public class ByteHandler extends AbstractTypeHandler {
     @Override

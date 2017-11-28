@@ -3,10 +3,10 @@ package com.sse.myhbase.type.handler;
 import com.sse.myhbase.type.AbstractTypeHandler;
 
 /**
- * @Author: Cai Shunda
- * @Description:
- * @Date: Created in 20:14 2017/11/10
- * @Modified by:
+ * @author: Cai Shunda
+ * @description:
+ * @date: Created in 20:14 2017/11/10
+ * @modified by:
  */
 public class CharacterHandler extends AbstractTypeHandler{
     @Override

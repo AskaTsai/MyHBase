@@ -9,10 +9,10 @@ import org.apache.commons.lang.builder.ToStringBuilder;
 import java.util.Date;
 
 /**
- * @Author: Cai Shunda
- * @Description:
- * @Date: Created in 17:06 2017/11/19
- * @Modified by:
+ * @author: Cai Shunda
+ * @description:
+ * @date: Created in 17:06 2017/11/19
+ * @modified by:
  */
 public class PutRequest<T> {
     private RowKey rowKey;

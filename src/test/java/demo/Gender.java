@@ -1,10 +1,10 @@
 package demo;
 
 /**
- * @Author: Cai Shunda
- * @Description:
- * @Date: Created in 20:01 2017/11/13
- * @Modified by:
+ * @author: Cai Shunda
+ * @description:
+ * @date: Created in 20:01 2017/11/13
+ * @modified by:
  */
 public enum  Gender {
     MALE, FEMALE

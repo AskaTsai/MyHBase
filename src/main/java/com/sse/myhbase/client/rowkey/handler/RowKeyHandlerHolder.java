@@ -7,10 +7,10 @@ import com.sse.myhbase.util.Util;
 import java.util.concurrent.ConcurrentHashMap;
 
 /**
- * @Author: Cai Shunda
- * @Description:
- * @Date: Created in 16:10 2017/11/9
- * @Modified by:
+ * @author: Cai Shunda
+ * @description:
+ * @date: Created in 16:10 2017/11/9
+ * @modified by:
  */
 public class RowKeyHandlerHolder {
     /**
@@ -20,9 +20,9 @@ public class RowKeyHandlerHolder {
 
 
     /**
-     * @Author: Cai Shunda
-     * @Description: 通过类名找到行键handler的实例
-     * @Date: 16:38 2017/11/9
+     * @author: Cai Shunda
+     * @description: 通过类名找到行键handler的实例
+     * @date: 16:38 2017/11/9
      */
     public static RowKeyHandler findRowKeyHandler(String type) {
         Util.checkNull(type);

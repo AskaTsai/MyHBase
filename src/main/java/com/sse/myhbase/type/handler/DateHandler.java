@@ -6,10 +6,10 @@ import org.apache.hadoop.hbase.util.Bytes;
 import java.util.Date;
 
 /**
- * @Author: Cai Shunda
- * @Description:
- * @Date: Created in 22:59 2017/11/9
- * @Modified by:
+ * @author: Cai Shunda
+ * @description:
+ * @date: Created in 22:59 2017/11/9
+ * @modified by:
  */
 public class DateHandler extends AbstractTypeHandler{
     @Override

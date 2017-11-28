@@ -3,10 +3,10 @@ package com.sse.myhbase.hql;
 import com.sse.myhbase.util.Util;
 
 /**
- * @Author: Cai Shunda
- * @Description:
- * @Date: Created in 19:13 2017/11/11
- * @Modified by:
+ * @author: Cai Shunda
+ * @description:
+ * @date: Created in 19:13 2017/11/11
+ * @modified by:
  */
 public class HBaseQuery {
     private String id;

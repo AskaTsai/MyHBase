@@ -7,10 +7,10 @@ import com.sse.myhbase.util.Util;
 import java.util.concurrent.ConcurrentHashMap;
 
 /**
- * @Author: Cai Shunda
- * @Description: typehandler实例的holder
- * @Date: Created in 21:55 2017/11/9
- * @Modified by:
+ * @author: Cai Shunda
+ * @description: typehandler实例的holder
+ * @date: Created in 21:55 2017/11/9
+ * @modified by:
  */
 public class TypeHandlerHolder {
     /**
@@ -19,9 +19,9 @@ public class TypeHandlerHolder {
     private static ConcurrentHashMap<String, TypeHandler> typeHandlerCache = new ConcurrentHashMap<>();
 
     /**
-     * @Author: Cai Shunda
-     * @Description: 通过typehandler的名字找到对应的typehandler实例
-     * @Date: 22:00 2017/11/9
+     * @author: Cai Shunda
+     * @description: 通过typehandler的名字找到对应的typehandler实例
+     * @date: 22:00 2017/11/9
      */
     public static TypeHandler findTypeHandler(String type) {
         Util.checkNull(type);

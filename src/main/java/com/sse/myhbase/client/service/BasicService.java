@@ -8,74 +8,74 @@ import com.sse.myhbase.client.RowKey;
 import java.util.List;
 
 /**
- * @Author: Cai Shunda
- * @Description: 提供基础服务
- * @Date: Created in 16:45 2017/11/19
- * @Modified by:
+ * @author: Cai Shunda
+ * @description: 提供基础服务
+ * @date: Created in 16:45 2017/11/19
+ * @modified by:
  */
 public interface BasicService {
     /**
-     * @Author: Cai Shunda
-     * @Description: put POJO（java简单对象）
+     * @author: Cai Shunda
+     * @description: put POJO（java简单对象）
      * @Param: rowKey 行键
      * @Param: t 放入的java对象
-     * @Date: 16:57 2017/11/19
+     * @date: 16:57 2017/11/19
      */
     public <T> void putObject(RowKey rowKey, T t);
 
     /**
-     * @Author: Cai Shunda
-     * @Description: put java简单对象的List
+     * @author: Cai Shunda
+     * @description: put java简单对象的List
      * @Param: putRequestList POJO List
-     * @Date: 20:45 2017/11/19
+     * @date: 20:45 2017/11/19
      */
     public <T> void putObjectList(List<PutRequest<T>> putRequestList);
 
     /**
-     * @Author: Cai Shunda
-     * @Description: 根据行键rowkey获取对象
+     * @author: Cai Shunda
+     * @description: 根据行键rowkey获取对象
      * @Param:
-     * @Date: 22:57 2017/11/21
+     * @date: 22:57 2017/11/21
      */
     public <T> T findObject(RowKey rowKey, Class<? extends T> type);
 
     /**
-     * @Author: Cai Shunda
-     * @Description: 通过RowKey找到对象和RowKey行键
+     * @author: Cai Shunda
+     * @description: 通过RowKey找到对象和RowKey行键
      * @Param:
-     * @Date: 21:08 2017/11/23
+     * @date: 21:08 2017/11/23
      */
     public <T> MyHBaseDOWithKeyResult<T> findObjectAndKey(RowKey rowKey, Class<? extends T> type);
 
     /**
-     * @Author: Cai Shunda
-     * @Description: 通过RowKey找到对象和RowKey行键
+     * @author: Cai Shunda
+     * @description: 通过RowKey找到对象和RowKey行键
      * @Param:
-     * @Date: 21:47 2017/11/23
+     * @date: 21:47 2017/11/23
      */
     public <T> MyHBaseDOWithKeyResult<T> findObjectAndKey(RowKey rowKey, Class<? extends T> type, QueryExtInfo queryExtInfo);
 
     /**
-     * @Author: Cai Shunda
-     * @Description: 找到在【startRowKey, endRowKey）之间的所有type类型的java对象
+     * @author: Cai Shunda
+     * @description: 找到在【startRowKey, endRowKey）之间的所有type类型的java对象
      * @Param:
-     * @Date: 20:30 2017/11/27
+     * @date: 20:30 2017/11/27
      */
     public <T> List<T> findObjectList(RowKey startRowKey, RowKey endRowKey, Class<? extends T> type);
 
     /**
-     * @Author: Cai Shunda
-     * @Description: 找到在【startRowKey, endRowKey）之间的所有type类型的java对象
+     * @author: Cai Shunda
+     * @description: 找到在【startRowKey, endRowKey）之间的所有type类型的java对象
      * @Param:
-     * @Date: 20:40 2017/11/27
+     * @date: 20:40 2017/11/27
      */
     public <T> List<MyHBaseDOWithKeyResult<T>> findObjectAndKeyList(RowKey startRowKey, RowKey endRowKey, Class<? extends T> type);
 
     /**
-     * @Author: Cai Shunda
-     * @Description: 找到在【startRowKey, endRowKey）之间的所有type类型的java对象
+     * @author: Cai Shunda
+     * @description: 找到在【startRowKey, endRowKey）之间的所有type类型的java对象
      * @Param:
-     * @Date: 20:40 2017/11/27
+     * @date: 20:40 2017/11/27
      */
     public <T> List<MyHBaseDOWithKeyResult<T>> findObjectAndKeyList(RowKey startRowKey, RowKey endRowKey,
                                                                     Class<? extends T> type, QueryExtInfo queryExtInfo);

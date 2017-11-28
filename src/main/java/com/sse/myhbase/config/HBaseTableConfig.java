@@ -20,10 +20,10 @@ import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
 
 /**
- * @Author: Cai Shunda
- * @Description:
- * @Date: Created in 20:19 2017/11/2
- * @Modified by:
+ * @author: Cai Shunda
+ * @description:
+ * @date: Created in 20:19 2017/11/2
+ * @modified by:
  */
 public class HBaseTableConfig {
     /**
@@ -53,9 +53,9 @@ public class HBaseTableConfig {
     private ConcurrentHashMap<Class<?>, TypeInfo> mappingTypes = new ConcurrentHashMap<>();
 
     /**
-     * @Author: Cai Shunda
-     * @Description: 初始化HBaseTableConfig
-     * @Date: 22:49 2017/11/10
+     * @author: Cai Shunda
+     * @description: 初始化HBaseTableConfig
+     * @date: 22:49 2017/11/10
      */
     public void init() {
         Util.checkNull(configResource);
@@ -88,14 +88,14 @@ public class HBaseTableConfig {
     }
 
     /**
-     * @Author: Cai Shunda
-     * @Description:  从映射信息中获取对应POJO的类型信息
+     * @author: Cai Shunda
+     * @description:  从映射信息中获取对应POJO的类型信息
      *          会通过三种方式来获取映射信息：
      *          1. 通过配置的xml文件
      *          2. 通过@HBaseTable注解发现映射关系，同时会记录下来
      *          3. 通过反射来发现映射关系，同时会记录下来
      * @Param:
-     * @Date: 21:36 2017/11/19
+     * @date: 21:36 2017/11/19
      */
     @Nullable
     public TypeInfo findTypeInfo(@NotNullable Class<?> type) {
@@ -134,9 +134,9 @@ public class HBaseTableConfig {
     }
 
     /**
-     * @Author: Cai Shunda
-     * @Description: 把HBaseQuery转化为map缓存起来
-     * @Date: 22:28 2017/11/11
+     * @author: Cai Shunda
+     * @description: 把HBaseQuery转化为map缓存起来
+     * @date: 22:28 2017/11/11
      */
     public void addHBaseQueryList(List<HBaseQuery> hBaseQueries) {
         CollectionUtil.checkNull(hBaseQueries);

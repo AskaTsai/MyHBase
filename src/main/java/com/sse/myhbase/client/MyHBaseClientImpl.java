@@ -18,10 +18,10 @@ import java.util.List;
 
 
 /**
- * @Author: Cai Shunda
- * @Description: MyHBaseClinet的默认实现
- * @Date: Created in 21:51 2017/11/1
- * @Modified by:
+ * @author: Cai Shunda
+ * @description: MyHBaseClinet的默认实现
+ * @date: Created in 21:51 2017/11/1
+ * @modified by:
  */
 public class MyHBaseClientImpl extends MyHBaseClientBase{
     private Logger logger = Logger.getLogger(MyHBaseClientImpl.class);
@@ -67,9 +67,9 @@ public class MyHBaseClientImpl extends MyHBaseClientBase{
     }
 
     /**
-     * @Author: Cai Shunda
-     * @Description: 自动创建HBaseTableConfig设置的表
-     * @Date: 20:52 2017/11/17
+     * @author: Cai Shunda
+     * @description: 自动创建HBaseTableConfig设置的表
+     * @date: 20:52 2017/11/17
      */
     @Override
     public void autoCreateTable() {
@@ -291,10 +291,10 @@ public class MyHBaseClientImpl extends MyHBaseClientBase{
     }
 
     /**
-     * @Author: Cai Shunda
-     * @Description: 清理所有请求的时间标签
+     * @author: Cai Shunda
+     * @description: 清理所有请求的时间标签
      * @Param:
-     * @Date: 21:11 2017/11/19
+     * @date: 21:11 2017/11/19
      */
     private <T> void cleanTimestampForPutRequest(List<PutRequest<T>> putRequests) {
         if (putRequests == null || putRequests.isEmpty()) {

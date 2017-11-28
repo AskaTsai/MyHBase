@@ -13,10 +13,10 @@ import org.apache.hadoop.hbase.util.Bytes;
 import java.util.*;
 
 /**
- * @Author: Cai Shunda
- * @Description: HBase表的Schema，包含表的所有元数据
- * @Date: Created in 20:17 2017/11/7
- * @Modified by:
+ * @author: Cai Shunda
+ * @description: HBase表的Schema，包含表的所有元数据
+ * @date: Created in 20:17 2017/11/7
+ * @modified by:
  */
 public class HBaseTableSchema {
     //-----------------Xml的配置--------------------
@@ -121,10 +121,10 @@ public class HBaseTableSchema {
     }
 
     /**
-     * @Author: Cai Shunda
-     * @Description: 通过family和qualifier找到HBaseColumnSchema
+     * @author: Cai Shunda
+     * @description: 通过family和qualifier找到HBaseColumnSchema
      * @Param:
-     * @Date: 21:36 2017/11/20
+     * @date: 21:36 2017/11/20
      */
     public HBaseColumnSchema findColumnSchema(String family, String qualifier) {
         Util.checkEmptyString(family);
@@ -138,9 +138,9 @@ public class HBaseTableSchema {
     }
 
     /**
-     * @Author: Cai Shunda
-     * @Description: 通过列名找到对应的列Schema，只有当且仅当通过指定列名找到一个Schema才能返回，否则会报错
-     * @Date: 21:48 2017/11/12
+     * @author: Cai Shunda
+     * @description: 通过列名找到对应的列Schema，只有当且仅当通过指定列名找到一个Schema才能返回，否则会报错
+     * @date: 21:48 2017/11/12
      */
     public HBaseColumnSchema findColummSchema(String qualifier) {
         Util.checkEmptyString(qualifier);
@@ -156,9 +156,9 @@ public class HBaseTableSchema {
     }
 
     /**
-     * @Author: Cai Shunda
-     * @Description: 获取所有配置的列族,去重
-     * @Date: 21:17 2017/11/17
+     * @author: Cai Shunda
+     * @description: 获取所有配置的列族,去重
+     * @date: 21:17 2017/11/17
      */
     public Set<String> getAllConfigedFamilys() {
         Set<String> familys = new HashSet<>();

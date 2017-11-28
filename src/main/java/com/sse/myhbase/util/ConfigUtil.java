@@ -11,10 +11,10 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * @Author: Cai Shunda
- * @Description:
- * @Date: Created in 19:03 2017/11/7
- * @Modified by:
+ * @author: Cai Shunda
+ * @description:
+ * @date: Created in 19:03 2017/11/7
+ * @modified by:
  */
 public class ConfigUtil {
     /**logger*/
@@ -26,9 +26,9 @@ public class ConfigUtil {
     }
 
     /**
-     * @Author: Cai Shunda
-     * @Description: 加载配置文件
-     * @Date: 19:17 2017/11/7
+     * @author: Cai Shunda
+     * @description: 加载配置文件
+     * @date: 19:17 2017/11/7
      */
     public static Map<String, String> loadConfigFile(@Nullable InputStream inputStream) throws IOException {
         Map<String, String> result = new HashMap<>();

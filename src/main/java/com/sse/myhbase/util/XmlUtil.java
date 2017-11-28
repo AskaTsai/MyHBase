@@ -15,10 +15,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * @Author: Cai Shunda
- * @Description:
- * @Date: Created in 20:09 2017/11/11
- * @Modified by:
+ * @author: Cai Shunda
+ * @description:
+ * @date: Created in 20:09 2017/11/11
+ * @modified by:
  */
 public class XmlUtil {
     /**
@@ -27,10 +27,10 @@ public class XmlUtil {
     private static Logger logger = Logger.getLogger(XmlUtil.class);
 
     /**
-     * @Author: Cai Shunda
-     * @Description:  找到指定节点名称的最顶层节点(只遍历根节点的孩子节点)
+     * @author: Cai Shunda
+     * @description:  找到指定节点名称的最顶层节点(只遍历根节点的孩子节点)
      *                只找到一个才返回，找到多个不返回
-     * @Date: 20:13 2017/11/11
+     * @date: 20:13 2017/11/11
      */
     @Nullable
     public static Node findTopLevelNode(InputStream inputStream,String nodeName) {
@@ -43,9 +43,9 @@ public class XmlUtil {
     }
 
     /**
-     * @Author: Cai Shunda
-     * @Description: 找到指定节点名称的最顶层节点们(只遍历根节点的孩子节点)
-     * @Date: 20:43 2017/11/11
+     * @author: Cai Shunda
+     * @description: 找到指定节点名称的最顶层节点们(只遍历根节点的孩子节点)
+     * @date: 20:43 2017/11/11
      */
     public static List<Node> findTopLevelNodes(InputStream inputStream, String nodeName) {
         List<Node> nodeList = new ArrayList<>();
@@ -80,9 +80,9 @@ public class XmlUtil {
     }
 
     /**
-     * @Author: Cai Shunda
-     * @Description: 获取指定节点的指定属性的值
-     * @Date: 20:45 2017/11/11
+     * @author: Cai Shunda
+     * @description: 获取指定节点的指定属性的值
+     * @date: 20:45 2017/11/11
      */
     @Nullable
     public static String getAttribute(Node node, String attrName) {

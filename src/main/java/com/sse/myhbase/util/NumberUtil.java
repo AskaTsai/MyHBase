@@ -1,16 +1,16 @@
 package com.sse.myhbase.util;
 
 /**
- * @Author: Cai Shunda
- * @Description: 数字相关的
- * @Date: Created in 16:37 2017/11/7
- * @Modified by:
+ * @author: Cai Shunda
+ * @description: 数字相关的
+ * @date: Created in 16:37 2017/11/7
+ * @modified by:
  */
 public class NumberUtil {
     /**
-     * @Author: Cai Shunda
-     * @Description: 是否大于0
-     * @Date: 16:42 2017/11/7
+     * @author: Cai Shunda
+     * @description: 是否大于0
+     * @date: 16:42 2017/11/7
      */
     public static boolean isPositive(int num){
         return num >=0;

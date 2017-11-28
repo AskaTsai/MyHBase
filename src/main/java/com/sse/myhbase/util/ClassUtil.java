@@ -7,10 +7,10 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * @Author: Cai Shunda
- * @Description:
- * @Date: Created in 16:26 2017/11/9
- * @Modified by:
+ * @author: Cai Shunda
+ * @description:
+ * @date: Created in 16:26 2017/11/9
+ * @modified by:
  */
 public class ClassUtil {
     private static Map<String, Class<?>> nativeClassMap = new HashMap<String, Class<?>>();
@@ -53,12 +53,12 @@ public class ClassUtil {
     }
 
     /**
-     * @Author: Cai Shunda
-     * @Description: 通过类名找到类
+     * @author: Cai Shunda
+     * @description: 通过类名找到类
      * 原生类int/Int, boolean/Boolean.
      * 包装类, such as string/String,date/Date.
      * 剩下的类的类名要完整
-     * @Date: 16:34 2017/11/9
+     * @date: 16:34 2017/11/9
      */
     public static Class<?> forName(String className) {
         Util.checkEmptyString(className);
@@ -79,9 +79,9 @@ public class ClassUtil {
     }
 
     /**
-     * @Author: Cai Shunda
-     * @Description: 如果c能够转化成封装类就转成封装类返回，否则返回c
-     * @Date: 21:22 2017/11/9
+     * @author: Cai Shunda
+     * @description: 如果c能够转化成封装类就转成封装类返回，否则返回c
+     * @date: 21:22 2017/11/9
      */
     public static Class<?> tryConvertToBoxClass(Class<?> c){
         Util.checkNull(c);

@@ -4,10 +4,10 @@ import com.sse.myhbase.type.AbstractTypeHandler;
 import org.apache.hadoop.hbase.util.Bytes;
 
 /**
- * @Author: Cai Shunda
- * @Description:
- * @Date: Created in 21:17 2017/11/10
- * @Modified by:
+ * @author: Cai Shunda
+ * @description:
+ * @date: Created in 21:17 2017/11/10
+ * @modified by:
  */
 public class ShortHandler extends AbstractTypeHandler{
     @Override

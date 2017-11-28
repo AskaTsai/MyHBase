@@ -22,10 +22,10 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
 /**
- * @Author: Cai Shunda
- * @Description: 代表HBase的一个数据源
- * @Date: Created in 20:19 2017/11/2
- * @Modified by:
+ * @author: Cai Shunda
+ * @description: 代表HBase的一个数据源
+ * @date: Created in 20:19 2017/11/2
+ * @modified by:
  */
 public class HBaseDataSource {
     /**
@@ -171,9 +171,9 @@ public class HBaseDataSource {
     }
 
     /**
-     * @Author: Cai Shunda
-     * @Description: 初始化HBase连接
-     * @Date: 17:22 2017/11/7
+     * @author: Cai Shunda
+     * @description: 初始化HBase连接
+     * @date: 17:22 2017/11/7
      */
     private void initConnection() {
         try {
@@ -186,9 +186,9 @@ public class HBaseDataSource {
     }
 
     /**
-     * @Author: Cai Shunda
-     * @Description: 初始化HBase的表连接池服务
-     * @Date: 15:10 2017/11/7
+     * @author: Cai Shunda
+     * @description: 初始化HBase的表连接池服务
+     * @date: 15:10 2017/11/7
      */
     private void initHTablePoolService() {
         if (hTablePoolService != null) {

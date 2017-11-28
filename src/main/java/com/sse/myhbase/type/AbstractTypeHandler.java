@@ -5,10 +5,10 @@ import com.sse.myhbase.exception.MyHBaseException;
 import com.sse.myhbase.util.Util;
 
 /**
- * @Author: Cai Shunda
- * @Description: typeHandler骨架的实现,求同存异，把固定步骤实现，同时把不同的地方开放接口让子类实现
- * @Date: Created in 22:20 2017/11/9
- * @Modified by:
+ * @author: Cai Shunda
+ * @description: typeHandler骨架的实现,求同存异，把固定步骤实现，同时把不同的地方开放接口让子类实现
+ * @date: Created in 22:20 2017/11/9
+ * @modified by:
  */
 public abstract class AbstractTypeHandler implements TypeHandler{
 

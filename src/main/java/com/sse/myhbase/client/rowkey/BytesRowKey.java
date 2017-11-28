@@ -7,10 +7,10 @@ import org.apache.commons.lang.builder.EqualsBuilder;
 import org.apache.commons.lang.builder.HashCodeBuilder;
 
 /**
- * @Author: Cai Shunda
- * @Description: 字节数组类型的rowkwy
- * @Date: Created in 11:20 2017/11/8
- * @Modified by:
+ * @author: Cai Shunda
+ * @description: 字节数组类型的rowkwy
+ * @date: Created in 11:20 2017/11/8
+ * @modified by:
  */
 public class BytesRowKey implements RowKey{
     private byte[] key;

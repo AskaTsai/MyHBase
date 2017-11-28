@@ -8,16 +8,16 @@ import com.sse.myhbase.exception.MyHBaseException;
 import java.io.Closeable;
 
 /**
- * @Author: Cai Shunda
- * @Description: 客户端Util
- * @Date: Created in 11:45 2017/11/7
- * @Modified by:
+ * @author: Cai Shunda
+ * @description: 客户端Util
+ * @date: Created in 11:45 2017/11/7
+ * @modified by:
  */
 public class Util {
     /**
-     * @Author: Cai Shunda
-     * @Description: 检查bool类型是不是false
-     * @Date: 11:58 2017/11/7
+     * @author: Cai Shunda
+     * @description: 检查bool类型是不是false
+     * @date: 11:58 2017/11/7
      */
     public static void check(boolean bool){
         if (bool == false) {
@@ -26,9 +26,9 @@ public class Util {
     }
 
     /**
-     * @Author: Cai Shunda
-     * @Description: 检查String不为null或不为空
-     * @Date: 12:30 2017/11/7
+     * @author: Cai Shunda
+     * @description: 检查String不为null或不为空
+     * @date: 12:30 2017/11/7
      */
     public static void checkEmptyString(String str) {
         if (StringUtil.isEmptyString(str)) {
@@ -37,9 +37,9 @@ public class Util {
     }
 
     /**
-     * @Author: Cai Shunda
-     * @Description: 检查确保对象不为null
-     * @Date: 15:41 2017/11/7
+     * @author: Cai Shunda
+     * @description: 检查确保对象不为null
+     * @date: 15:41 2017/11/7
      */
     public static void checkNull(Object object) {
         if (object == null) {
@@ -48,9 +48,9 @@ public class Util {
     }
 
     /**
-     * @Author: Cai Shunda
-     * @Description:检查是否为正数
-     * @Date: 16:40 2017/11/7
+     * @author: Cai Shunda
+     * @description:检查是否为正数
+     * @date: 16:40 2017/11/7
      */
     public static void checkPositive(int num) {
         if (!NumberUtil.isPositive(num)) {
@@ -59,9 +59,9 @@ public class Util {
     }
 
     /**
-     * @Author: Cai Shunda
-     * @Description: 检查字节数组values是否是指定长度
-     * @Date: 20:41 2017/11/10
+     * @author: Cai Shunda
+     * @description: 检查字节数组values是否是指定长度
+     * @date: 20:41 2017/11/10
      */
     public static void checkLength(byte[] values, int length) {
         Util.checkNull(values);
@@ -72,10 +72,10 @@ public class Util {
         }
     }
     /**
-     * @Author: Cai Shunda
-     * @Description: 检查PutRequest
+     * @author: Cai Shunda
+     * @description: 检查PutRequest
      * @Param:
-     * @Date: 21:19 2017/11/19
+     * @date: 21:19 2017/11/19
      */
     public static void checkPutRequest(PutRequest<?> putRequest) {
         checkNull(putRequest);
@@ -84,10 +84,10 @@ public class Util {
     }
 
     /**
-     * @Author: Cai Shunda
-     * @Description: 检查行键RowKey
+     * @author: Cai Shunda
+     * @description: 检查行键RowKey
      * @Param:
-     * @Date: 21:19 2017/11/19
+     * @date: 21:19 2017/11/19
      */
     public static void checkRowKey(RowKey rowKey) {
         checkNull(rowKey);
@@ -97,10 +97,10 @@ public class Util {
     }
 
     /**
-     * @Author: Cai Shunda
-     * @Description: 关闭连接
+     * @author: Cai Shunda
+     * @description: 关闭连接
      * @Param:
-     * @Date: 22:15 2017/11/20
+     * @date: 22:15 2017/11/20
      */
     public static void close(@Nullable Closeable closeable) {
         if (closeable == null) {

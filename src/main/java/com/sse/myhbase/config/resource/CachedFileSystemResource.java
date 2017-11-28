@@ -10,11 +10,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * @Author: Cai Shunda
- * @Description: 重写FileSystemResource,
+ * @author: Cai Shunda
+ * @description: 重写FileSystemResource,
  *                FileSystemResource是以文件的绝对路径方式进行访问
- * @Date: Created in 22:51 2017/11/12
- * @Modified by:
+ * @date: Created in 22:51 2017/11/12
+ * @modified by:
  */
 public class CachedFileSystemResource extends FileSystemResource{
 

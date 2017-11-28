@@ -4,10 +4,10 @@ import com.sse.myhbase.client.RowKey;
 import org.apache.hadoop.hbase.util.Bytes;
 
 /**
- * @Author: Cai Shunda
- * @Description:
- * @Date: Created in 22:22 2017/11/20
- * @Modified by:
+ * @author: Cai Shunda
+ * @description:
+ * @date: Created in 22:22 2017/11/20
+ * @modified by:
  */
 public class StudentRowKey  implements RowKey{
     private int row;
