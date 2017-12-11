@@ -1,5 +1,6 @@
 package com.sse.myhbase.util;
 
+import com.sse.myhbase.client.DeleteRequest;
 import com.sse.myhbase.client.PutRequest;
 import com.sse.myhbase.client.RowKey;
 import com.sse.myhbase.core.Nullable;
@@ -81,6 +82,11 @@ public class Util {
         checkNull(putRequest);
         checkNull(putRequest.getT());
         checkRowKey(putRequest.getRowKey());
+    }
+
+    public static void checkDeleteRequest(DeleteRequest deleteRequest) {
+        checkNull(deleteRequest);
+        checkRowKey(deleteRequest.getRowKey());
     }
 
     /**

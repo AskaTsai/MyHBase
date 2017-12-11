@@ -147,7 +147,7 @@ abstract public class MyHBaseClientBase implements MyHBaseClient{
 
 
         int cachingSize = myHBaseRuntimeSetting.getScanCachingSize();
-        if (myHBaseRuntimeSetting.isIntelligentSacnSize()) {
+        if (myHBaseRuntimeSetting.isIntelligentScanSize()) {
             //待完善，这样最大每次只能扫描到MAX_VALUE,讲道理int的最大值2的31次方，21亿足够了
             if (queryExtInfo != null && queryExtInfo.isLimitSet()) {
                 long limitScanSize = queryExtInfo.getStartIndex() + queryExtInfo.getLength();

@@ -14,6 +14,7 @@ import org.apache.log4j.Logger;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 
 
@@ -218,6 +219,74 @@ public class MyHBaseClientImpl extends MyHBaseClientBase{
     @Override
     public <T> List<MyHBaseDOWithKeyResult<T>> findObjectAndKeyList(RowKey startRowKey, RowKey endRowKey, Class<? extends T> type, QueryExtInfo queryExtInfo) {
         return findObjectAndKeyList_internal(startRowKey, endRowKey, type, null, queryExtInfo);
+    }
+
+    @Override
+    public void deleteObject(RowKey rowKey, Class<?> type) {
+        List<RowKey> rowKeyList = new ArrayList<>();
+        rowKeyList.add(rowKey);
+        deleteObjectList(rowKeyList, type);
+    }
+
+    @Override
+    public void deleteObjectList(List<RowKey> rowKeyList, Class<?> type) {
+        Util.checkNull(rowKeyList);
+        List<DeleteRequest> deleteRequestList = new ArrayList<>();
+
+        for (RowKey rowKey: rowKeyList) {
+            deleteRequestList.add(new DeleteRequest(rowKey));
+        }
+
+        deleteObjectListByRowKey_internal(deleteRequestList, type);
+    }
+
+    private void deleteObjectListByRowKey_internal(List<DeleteRequest> deleteRequestList, Class<?> type) {
+        Util.checkNull(deleteRequestList);
+        Util.checkNull(type);
+
+        if (deleteRequestList.isEmpty()) {
+            return;
+        }
+
+        for (DeleteRequest deleteRequest : deleteRequestList) {
+            Util.checkDeleteRequest(deleteRequest);
+        }
+
+        TypeInfo typeInfo = findTypeInfo(type);
+        List<ColumnInfo> columnInfoList = typeInfo.getColumnInfos();
+
+        //待理解,why linkedList
+        List<Delete> deletes = new LinkedList<>();
+
+        for (DeleteRequest deleteRequest : deleteRequestList) {
+            Delete delete = new Delete(deleteRequest.getRowKey().toBytes());
+            for (ColumnInfo columnInfo : columnInfoList) {
+                if (deleteRequest.getTimestamp() == null) {
+                    //删除所有版本
+                    delete.addColumn(columnInfo.familyBytes, columnInfo.qualifierBytes);
+                } else {
+                    //删除指定版本
+                    delete.addColumn(columnInfo.familyBytes, columnInfo.qualifierBytes, deleteRequest.getTimestamp());
+                }
+            }
+            deletes.add(delete);
+        }
+
+        HTable hTable = getHTable();
+        try {
+            hTable.delete(deletes);
+        } catch (IOException e) {
+            throw new MyHBaseException("deleteObjectList_internal. deleteRequestList = "
+                    + deleteRequestList, e);
+        } finally {
+            Util.close(hTable);
+        }
+
+        //一旦所有删除请求都执行了， 则删除请求列表都会被清空
+        if (deletes.size() > 0) {
+            throw new MyHBaseException("deleteObjectList_internal. deletes = "
+                    + deletes);
+        }
     }
 
     private <T> List<MyHBaseDOWithKeyResult<T>> findObjectAndKeyList_internal(

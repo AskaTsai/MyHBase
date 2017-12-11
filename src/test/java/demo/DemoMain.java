@@ -126,4 +126,10 @@ public class DemoMain {
         logger.info(students);
     }
 
+    @Test
+    public void deleteObject() {
+        MyHBaseClient client = getMyHBaseClient();
+        client.deleteObject(new StudentRowKey(110), Student.class);
+    }
+
 }

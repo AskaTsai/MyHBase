@@ -80,4 +80,20 @@ public interface BasicService {
     public <T> List<MyHBaseDOWithKeyResult<T>> findObjectAndKeyList(RowKey startRowKey, RowKey endRowKey,
                                                                     Class<? extends T> type, QueryExtInfo queryExtInfo);
 
+    /**
+     * @Author: Cai Shunda
+     * @Description: 删除指定行键的HBase中的对象
+     * @Param:
+     * @Date: 20:28 2017/11/29
+     */
+    public void deleteObject(RowKey rowKey, Class<?> type);
+
+    /**
+     * @Author: Cai Shunda
+     * @Description: 删除所有指定行键的HBase的对象
+     * @Param:
+     * @Date: 21:23 2017/11/29
+     */
+    public void deleteObjectList(List<RowKey> rowKeyList, Class<?> type);
+
 }
