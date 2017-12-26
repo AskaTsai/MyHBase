@@ -96,4 +96,13 @@ public interface BasicService {
      */
     public void deleteObjectList(List<RowKey> rowKeyList, Class<?> type);
 
+
+    /**
+     * @Author: Cai Shunda
+     * @Description: 删除指定范围行键【startRowKey, endRowKey）的HBase对象
+     * @Param:
+     * @Date: 16:19 2017/12/25
+     */
+    public void deleteObjectWithRange(RowKey startRowKey, RowKey endRowKey, Class<?> type);
+
 }

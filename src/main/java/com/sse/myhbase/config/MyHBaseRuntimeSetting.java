@@ -9,7 +9,7 @@ package com.sse.myhbase.config;
 public class MyHBaseRuntimeSetting {
 
     /**
-     * 多少Result，可以理解为多少个Result进行一次RPC操作
+     * 多少Result，可以理解为多少个Result进行一次RPC操作(竖向，面向行的优化处理)
      */
     private int scanCachingSize = 20;
 

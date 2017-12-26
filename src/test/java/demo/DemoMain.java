@@ -75,6 +75,19 @@ public class DemoMain {
     }
 
     @Test
+    public void putObjectWithAnnotation() {
+        MyHBaseClient client = getMyHBaseClient();
+        Teacher teacher = new Teacher();
+        teacher.setId(13111182);
+        teacher.setAge(40);
+        teacher.setDate(new Date());
+        teacher.setGender(Gender.MALE);
+        teacher.setName("蔡老苏");
+        client.putObject(new TeacherRowKey(100), teacher);
+
+    }
+
+    @Test
     public void putObjectWithXML() {
         MyHBaseClient client = getMyHBaseClient();
         Student student = new Student();
@@ -87,18 +100,6 @@ public class DemoMain {
 
     }
 
-    @Test
-    public void putObjectWithAnnotation() {
-        MyHBaseClient client = getMyHBaseClient();
-        Teacher teacher = new Teacher();
-        teacher.setId(13111182);
-        teacher.setAge(40);
-        teacher.setDate(new Date());
-        teacher.setGender(Gender.MALE);
-        teacher.setName("蔡老苏");
-        client.putObject(new TeacherRowKey(100), teacher);
-
-    }
 
     @Test
     public void putObjectReflection() {
@@ -120,9 +121,9 @@ public class DemoMain {
     }
 
     @Test
-    public void findObejectListByRange() {
+    public void findObjectListByRange() {
         MyHBaseClient client = getMyHBaseClient();
-        List<Student> students = client.findObjectList(new StudentRowKey(100), new StudentRowKey(10087), Student.class);
+        List<Student> students = client.findObjectList(new StudentRowKey(0), new StudentRowKey(999999), Student.class);
         logger.info(students);
     }
 
@@ -132,4 +133,9 @@ public class DemoMain {
         client.deleteObject(new StudentRowKey(110), Student.class);
     }
 
+    @Test
+    public void batchDeleteObject() {
+        MyHBaseClient client = getMyHBaseClient();
+        client.deleteObjectWithRange(new StudentRowKey(110), new StudentRowKey(10086), Student.class);
+    }
 }

@@ -1,5 +1,7 @@
 package com.sse.myhbase.client;
 
+import com.sse.myhbase.client.rowkey.BytesRowKey;
+import com.sse.myhbase.config.HBaseColumnSchema;
 import com.sse.myhbase.config.HBaseTableConfig;
 import com.sse.myhbase.config.HBaseTableSchema;
 import com.sse.myhbase.core.Nullable;
@@ -14,6 +16,7 @@ import org.apache.log4j.Logger;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -240,6 +243,17 @@ public class MyHBaseClientImpl extends MyHBaseClientBase{
         deleteObjectListByRowKey_internal(deleteRequestList, type);
     }
 
+    @Override
+    public void deleteObjectWithRange(RowKey startRowKey, RowKey endRowKey, Class<?> type) {
+        Util.checkRowKey(startRowKey);
+        Util.checkRowKey(endRowKey);
+        Util.checkNull(type);
+
+        TypeInfo typeInfo = findTypeInfo(type);
+        List<ColumnInfo> columnInfoList = typeInfo.getColumnInfos();
+        deleteInternalWithScanFirst(startRowKey, endRowKey, null, columnInfoList, null, null);
+    }
+
     private void deleteObjectListByRowKey_internal(List<DeleteRequest> deleteRequestList, Class<?> type) {
         Util.checkNull(deleteRequestList);
         Util.checkNull(type);
@@ -287,6 +301,107 @@ public class MyHBaseClientImpl extends MyHBaseClientBase{
             throw new MyHBaseException("deleteObjectList_internal. deletes = "
                     + deletes);
         }
+    }
+
+    /**
+     * @Author: Cai Shunda
+     * @Description:
+     * @Param:
+     * @Date: 16:39 2017/12/25
+     */
+    private void deleteInternalWithScanFirst(
+            RowKey startRowKey, RowKey endRowKey,
+            @Nullable Filter filter, @Nullable List<ColumnInfo> columnInfoList,
+            @Nullable List<HBaseColumnSchema> hBaseColumnSchemaList, @Nullable Date timestamp) {
+
+        Util.check((columnInfoList != null && !columnInfoList.isEmpty())
+                || (hBaseColumnSchemaList != null && !hBaseColumnSchemaList.isEmpty()));
+
+        final int deleteBatch = getDeleteBatch();
+
+        RowKey nextStartRowKey = startRowKey;
+        while (true) {
+            //scan一下要删除的目标，并构造delete
+            Scan temScan = constructScan(nextStartRowKey, endRowKey, filter, null);
+
+            List<Delete> deletes = new LinkedList<Delete>();
+
+            HTable hTable = getHTable();
+            ResultScanner resultScanner = null;
+
+            try {
+                resultScanner = hTable.getScanner(temScan);
+                Result result = null;
+                while ((result = resultScanner.next()) != null) {
+                    Delete delete = new Delete(result.getRow());
+                    //每一个result都有可能是下一次的startRowKey
+                    nextStartRowKey = new BytesRowKey(result.getRow());
+
+                    if (columnInfoList != null) {
+                        for (ColumnInfo columnInfo : columnInfoList) {
+                            if (timestamp == null) {
+                                //删除所有版本
+                                delete.addColumn(columnInfo.familyBytes, columnInfo.qualifierBytes);
+                            } else {
+                                //删除指定版本
+                                delete.addColumn(columnInfo.familyBytes, columnInfo.qualifierBytes, timestamp.getTime());
+                            }
+                        }
+                    }
+
+                    if (hBaseColumnSchemaList != null) {
+                        for (HBaseColumnSchema hBaseColumnSchema : hBaseColumnSchemaList) {
+                            if (timestamp == null) {
+                                //删除所有版本
+                                delete.addColumn(hBaseColumnSchema.getFamilyBytes(), hBaseColumnSchema.getQualifierBytes());
+                            } else {
+                                //删除指定版本
+                                delete.addColumn(hBaseColumnSchema.getFamilyBytes(), hBaseColumnSchema.getQualifierBytes(), timestamp.getTime());
+                            }
+                        }
+                    }
+
+                    deletes.add(delete);
+                    if (deletes.size() >= deleteBatch) {
+                        break;
+                    }
+
+                }
+            } catch (IOException e) {
+                throw new MyHBaseException("delete_internal_with_scan_first. scan = " + temScan, e);
+            } finally {
+                Util.close(resultScanner);
+                Util.close(hTable);
+            }
+
+            final int deleteListSize = deletes.size();
+            if (deleteListSize == 0) {
+                return;
+            }
+
+            //实际删除操作
+            try {
+                hTable = getHTable();
+                hTable.delete(deletes);
+            } catch (IOException e) {
+                throw new MyHBaseException("delete_internal_with_scan_first. scan = " + temScan, e);
+            } finally {
+                Util.close(hTable);
+            }
+
+            //一旦所有删除请求都执行了， 则删除请求列表都会被清空
+            if (deletes.size() > 0) {
+                throw new MyHBaseException("delete_internal_with_scan_first fail. deletes = "
+                        + deletes);
+            }
+
+            if (deleteListSize < deleteBatch) {
+                //这次循环删除的大小小于我们指定的最大批量数，可以认为在这个指定范围内已经没有需要删除的了
+                return;
+            }
+
+        }
+
     }
 
     private <T> List<MyHBaseDOWithKeyResult<T>> findObjectAndKeyList_internal(

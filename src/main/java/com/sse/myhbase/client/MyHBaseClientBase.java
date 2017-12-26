@@ -118,6 +118,15 @@ abstract public class MyHBaseClientBase implements MyHBaseClient{
     }
 
     /**
+     * @Author: Cai Shunda
+     * @Description:
+     * @Param:
+     * @Date: 17:52 2017/12/25
+     */
+    protected int getDeleteBatch() {
+        return myHBaseRuntimeSetting.getDeleteBatchSize();
+    }
+    /**
      * @author: Cai Shunda
      * @description: 为get根据type指定family和qualifier
      * @Param:
