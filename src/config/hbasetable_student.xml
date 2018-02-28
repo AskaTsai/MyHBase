@@ -14,4 +14,9 @@
         <field name="date" />
         <field name="gender" />
     </MappingType>
+    <Statements>
+        <statement>
+
+        </statement>
+    </Statements>
 </MyHbase>
