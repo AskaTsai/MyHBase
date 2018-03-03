@@ -10,7 +10,7 @@ import org.w3c.dom.NodeList;
 
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
-import java.io.InputStream;
+import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -42,6 +42,15 @@ public class XmlUtil {
         }
     }
 
+    public static Node findTopLevelNode(String filePath, String nodeName) {
+        Util.checkEmptyString(filePath);
+        try {
+            return findTopLevelNode(new BufferedInputStream(new FileInputStream(new File(filePath))), nodeName);
+        } catch (FileNotFoundException e) {
+            throw new MyHBaseException("can not find specified xml file file=" + filePath, e);
+        }
+
+    }
     /**
      * @author: Cai Shunda
      * @description: 找到指定节点名称的最顶层节点们(只遍历根节点的孩子节点)

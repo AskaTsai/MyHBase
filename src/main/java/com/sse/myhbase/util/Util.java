@@ -72,6 +72,21 @@ public class Util {
                     + values.length + " length=" + length);
         }
     }
+
+    /**
+     * @Author: Cai Shunda
+     * @Description:  检查字符串是不是指定长度
+     * @Param:
+     * @Date: 19:46 2018/3/1
+     */
+    public static void checkLength(String str, int length) {
+        Util.checkNull(str);
+
+        if (str.length() != length) {
+            throw new MyHBaseException("checkLength error. str=" + str + " length=" + length);
+        }
+    }
+
     /**
      * @author: Cai Shunda
      * @description: 检查PutRequest

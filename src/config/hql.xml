@@ -1,0 +1,15 @@
+<MyHBase>
+    <Statements>
+        <Statement id="isEqualTest">
+            Select * from big table where
+
+            <isEqual prepend="AND" property="gender" compareValue="Y">
+               gender=y
+            </isEqual>
+
+            <isEqual prepend="OR" property="age" compareValue="30">
+                age=30
+            </isEqual>
+        </Statement>
+    </Statements>
+</MyHBase>

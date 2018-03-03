@@ -1,9 +1,12 @@
 package com.sse.myhbase.hql;
 
+import com.sse.myhbase.hql.node.DynamicNodeHandler;
+import com.sse.myhbase.hql.node.binary.*;
 import com.sse.myhbase.hql.node.text.CDATASectionNodeHandler;
 import com.sse.myhbase.hql.node.text.CommentNodeHandler;
 import com.sse.myhbase.hql.node.StatementNodeHandler;
 import com.sse.myhbase.hql.node.text.TextNodeHandler;
+import com.sse.myhbase.hql.node.unary.*;
 import com.sse.myhbase.util.Util;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
@@ -32,6 +35,23 @@ public class HQLNodeParser {
         register(HQLNodeType.CDATASection, new CDATASectionNodeHandler());
 
         register(HQLNodeType.Dynamic, new DynamicNodeHandler());
+        register(HQLNodeType.IsNull, new IsNullNodeHandler());
+        register(HQLNodeType.IsNotNull, new IsNotNullNodeHandler());
+
+        register(HQLNodeType.IsEmpty, new IsEmptyNodeHandler());
+        register(HQLNodeType.IsNotEmpty, new IsNotEmptyNodeHandler());
+
+        register(HQLNodeType.IsPropertyAvailable, new IsPropertyAvailableNodeHandler());
+        register(HQLNodeType.IsNotPropertyAvailable, new IsNotPropertyAvailableNodeHandler());
+
+        register(HQLNodeType.IsEqual, new IsEqualNodeHandler());
+        register(HQLNodeType.IsNotEqual, new IsNotEqualNodeHandler());
+
+        register(HQLNodeType.IsGreaterThan, new IsGreaterThanNodeHandler());
+        register(HQLNodeType.IsGreaterEqual, new IsGreaterEqualNodeHandler());
+
+        register(HQLNodeType.IsLessThan, new IsLessThanNodeHandler());
+        register(HQLNodeType.IsLessEqual, new IsLessEqualNodeHandler());
     }
 
     /**

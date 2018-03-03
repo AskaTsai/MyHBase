@@ -38,11 +38,10 @@ abstract public class HQLNode {
 
     /**
      * @Author: Cai Shunda
-     * @Description:
+     * @Description: 赋予HQL以特定参数值，组成最终的HQL语句，sb就是最终的HQL语句
      * @Param:
      * @Date: 14:33 2018/1/7
      */
-    好好想想
     public abstract void applyParaMap(
             @Nullable Map<String, Object> para,
             @NotNullable StringBuilder sb,

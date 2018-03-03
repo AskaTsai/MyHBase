@@ -60,7 +60,19 @@ public class HBaseTableConfigParser {
      */
     public static List<HBaseQuery> parseHBaseQuery(InputStream inputStream) {
         Util.checkNull(inputStream);
-        Node statementsNode = XmlUtil.findTopLevelNode(inputStream, "statements");
+        Node statementsNode = XmlUtil.findTopLevelNode(inputStream, "Statements");
+        return parseHBaseQueryList(statementsNode);
+    }
+
+    /**
+     * @Author: Cai Shunda
+     * @Description: 解析指定xml文件中配置的HBase查询
+     * @Param:
+     * @Date: 20:22 2018/3/3
+     */
+    public static List<HBaseQuery> parseHBaseQuery(String filePath) {
+        Util.checkEmptyString(filePath);
+        Node statementsNode = XmlUtil.findTopLevelNode(filePath, "Statements");
         return parseHBaseQueryList(statementsNode);
     }
 
@@ -81,7 +93,7 @@ public class HBaseTableConfigParser {
         }
         for (int i = 0; i < nodeList.getLength(); i++) {
             Node node = nodeList.item(i);
-            if (!node.getNodeName().equals("statement")) {
+            if (!node.getNodeName().equals("Statement")) {
                 continue;
             }
             String id = XmlUtil.getAttribute(node, "id");

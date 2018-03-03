@@ -12,7 +12,7 @@ import org.w3c.dom.Node;
  */
 public enum HQLNodeType {
     //hql的最顶层节点
-    Statement("statement"),
+    Statement("Statement"),
 
     //文本节点，DOM树包含了被称为“不可忽略的空白”的文本节点，它是标签之间的空白（如回车符）。
     //多出来的那些Text内容是(包括，但不限于)一个结束标签与另一个开头标签的之间的空白部分
@@ -25,7 +25,34 @@ public enum HQLNodeType {
     CDATASection("#cdata-section"),
 
     //dynamic节点
-    Dynamic("dynamic");
+    Dynamic("dynamic"),
+
+    /** 一元条件节点 */
+    IsNull("isNull"),
+
+    IsNotNull("isNotNull"),
+
+    IsEmpty("isEmpty"),
+
+    IsNotEmpty("isNotEmpty"),
+
+    IsPropertyAvailable("isPropertyAvailable"),
+
+    IsNotPropertyAvailable("isNotPropertyAvailable"),
+
+    /** 二元条件节点*/
+    IsEqual("isEqual"),
+
+    IsNotEqual("isNotEqual"),
+
+    IsGreaterThan("isGreaterThan"),
+
+    IsGreaterEqual("isGreaterEqual"),
+
+    IsLessThan("isLessThan"),
+
+    IsLessEqual("isLessEqual");
+
     /**
      * xml节点的的名称
      */
