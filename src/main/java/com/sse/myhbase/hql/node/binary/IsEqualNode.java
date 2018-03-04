@@ -22,10 +22,11 @@ public class IsEqualNode extends BinaryNode{
         Object propertyValue = para.get(getProperty());
         if (propertyValue == null) {
             if (getProperty() == null) {
-                throw new MyHBaseException("isEqual Node has no property attribute.");
+                logger.warn("isEqual Node has no property attribute.");
             } else {
-                throw new MyHBaseException("isEqual Node property=" + getProperty() + " has no specified value in code." );
+                logger.warn("isEqual Node property=" + getProperty() + " has no specified value in code." );
             }
+            return false;
         }
         Object compareValue = myHBaseRuntimeSetting.interpret(propertyValue.getClass(), getCompareValue());
         return propertyValue.equals(compareValue);

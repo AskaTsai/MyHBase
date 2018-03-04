@@ -38,7 +38,7 @@ abstract public class HQLNode {
 
     /**
      * @Author: Cai Shunda
-     * @Description: 赋予HQL以特定参数值，组成最终的HQL语句，sb就是最终的HQL语句
+     * @Description: 赋予HQL以特定参数值，组成最终的HQL语句，sb就是最终的HQL语句,context主要用来记录上下文比如之前处理过什么节点
      * @Param:
      * @Date: 14:33 2018/1/7
      */

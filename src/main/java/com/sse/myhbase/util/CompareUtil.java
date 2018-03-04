@@ -18,6 +18,6 @@ public class CompareUtil {
         Util.checkNull(one);
         Util.checkNull(other);
         Comparable comp = (Comparable) one;
-        return comp.compareTo(one);
+        return comp.compareTo(other);
     }
 }

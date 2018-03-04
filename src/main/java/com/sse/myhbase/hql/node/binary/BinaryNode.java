@@ -12,7 +12,7 @@ import org.apache.log4j.Logger;
  */
 abstract public class BinaryNode extends ConditionNode {
 
-    final private static Logger logger = Logger.getLogger(BinaryNode.class);
+    final protected static Logger logger = Logger.getLogger(BinaryNode.class);
 
     private String property;
     private String compareValue;

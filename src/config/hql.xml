@@ -11,5 +11,132 @@
                 age=30
             </isEqual>
         </Statement>
+
+        <Statement id="isNotEqualTest">
+            Select * from big table where
+            <isNotEqual prepend="AND" property="gender" compareValue="Y">
+                gender=y
+            </isNotEqual>
+
+            <isNotEqual prepend="OR" property="age" compareValue="10">
+                age=10
+            </isNotEqual>
+        </Statement>
+
+        <Statement id="isGreaterThanTest">
+            I am
+            <isGreaterThan prepend="AND" property="gender" compareValue="M">
+                boy
+            </isGreaterThan>
+
+            <isGreaterThan prepend="OR" property="age" compareValue="10">
+                young
+            </isGreaterThan>
+            <isGreaterThan prepend="OR" property="birth" compareValue="1992-07-24">
+                happy birthday
+            </isGreaterThan>
+        </Statement>
+
+        <Statement id="isGreaterEqualTest">
+            I am
+            <isGreaterEqual prepend="AND" property="gender" compareValue="M">
+                boy
+            </isGreaterEqual>
+
+            <isGreaterEqual prepend="OR" property="age" compareValue="10">
+                young
+            </isGreaterEqual>
+            <isGreaterEqual prepend="OR" property="birth" compareValue="1992-07-24">
+                happy birthday
+            </isGreaterEqual>
+        </Statement>
+
+        <Statement id="isLessThanTest">
+            I am
+            <isLessThan prepend="AND" property="gender" compareValue="M">
+                boy
+            </isLessThan>
+
+            <isLessThan prepend="OR" property="age" compareValue="10">
+                young
+            </isLessThan>
+            <isLessThan prepend="OR" property="birth" compareValue="1992-07-24">
+                happy birthday
+            </isLessThan>
+        </Statement>
+
+        <Statement id="isLessEqualTest">
+            I am
+            <isLessEqual prepend="AND" property="gender" compareValue="M">
+                boy
+            </isLessEqual>
+
+            <isLessEqual prepend="OR" property="age" compareValue="10">
+                young
+            </isLessEqual>
+            <isLessEqual prepend="OR" property="birth" compareValue="1992-07-24">
+                happy birthday
+            </isLessEqual>
+        </Statement>
+
+        <Statement id="dynamicTest1">
+
+            <dynamic>
+                what a
+                <isEqual prepend="and" property="lovely?" compareValue="Y">
+                    lovely
+                </isEqual>
+            </dynamic>
+            <dynamic>
+                <isEqual prepend="and" property="nice?" compareValue="Y">
+                    nice
+                </isEqual>
+                day
+            </dynamic>
+
+        </Statement>
+
+        <Statement id="dynamicTest2">
+
+            <dynamic>
+                what a
+                <isEqual prepend="and" property="lovely?" compareValue="Y">
+                    lovely
+                </isEqual>
+                <isEqual prepend="and" property="nice?" compareValue="Y">
+                    nice
+                </isEqual>
+                day
+            </dynamic>
+
+        </Statement>
+
+        <Statement id="dynamicTest3">
+            what a
+            <dynamic prepend="very">
+                <isEqual prepend="and" property="lovely?" compareValue="Y">
+                    lovely
+                </isEqual>
+                <isEqual prepend="and" property="nice?" compareValue="Y">
+                    nice
+                </isEqual>
+            </dynamic>
+            day
+        </Statement>
+
+        <Statement id="cdataTest">
+            surprised!!!!
+            <![CDATA[<html>hello</html>]]>
+        </Statement>
+
+        <Statement id ="commentTest">
+            <!--this is comment-->
+            hello,<!--this is comment-->Aska
+            <!--this is comment-->
+        </Statement>
+
+        <Statement id ="textTest">
+            hello, Aska
+        </Statement>
     </Statements>
 </MyHBase>

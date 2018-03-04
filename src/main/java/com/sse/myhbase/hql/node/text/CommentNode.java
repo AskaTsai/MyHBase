@@ -7,7 +7,7 @@ import java.util.Map;
 
 /**
  * @author: Cai Shunda
- * @description:
+ * @description: 这个其实用不到，因为在解析成Statement的时候comment就已经被略去了
  * @date: Created in 14:50 2018/2/28
  * @modified by:
  */

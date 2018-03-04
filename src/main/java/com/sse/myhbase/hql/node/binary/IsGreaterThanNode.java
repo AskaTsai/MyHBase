@@ -29,8 +29,9 @@ public class IsGreaterThanNode extends BinaryNode {
                 throw new MyHBaseException("isEqual Node property=" + getProperty() + " has no specified value in code." );
             }
         }
-        Object compareValue = myHBaseRuntimeSetting.interpret(propertyValue.getClass(), getCompareValue());
 
+        Object compareValue = myHBaseRuntimeSetting.interpret(propertyValue.getClass(), getCompareValue());
+        System.out.println("propertyvalue=" + propertyValue + "， compareValue=" + compareValue);
         return CompareUtil.compare(propertyValue, compareValue) > 0;
     }
 }

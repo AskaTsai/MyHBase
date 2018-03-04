@@ -1,4 +1,4 @@
-package hql.node;
+package hql;
 
 import com.sse.myhbase.config.HBaseTableConfigParser;
 import com.sse.myhbase.hql.HBaseQuery;
